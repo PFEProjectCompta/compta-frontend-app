@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/banque-service/banque-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/banque-service/banque-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/config-service/config-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/config-service/config-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/exercice-service/exercice-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/exercice-service/exercice-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/gateway-service/gateway-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/gateway-service/gateway-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/office-service/office-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/office-service/office-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projet-fin-etude.iml" filepath="$PROJECT_DIR$/projet-fin-etude.iml" />
+    </modules>
+  </component>
+</project>

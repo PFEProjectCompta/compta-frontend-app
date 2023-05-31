@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$USER_HOME$/Desktop/spring pfe/config-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/office-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/exercice-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/banque-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/gateway-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
