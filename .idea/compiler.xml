@@ -8,27 +8,39 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-service" />
+        <module name="client-fourniseur-service" />
         <module name="gateway-service" />
         <module name="office-service" />
-        <module name="exercice-service" />
         <module name="banque-service" />
+        <module name="chating-service" />
+        <module name="base-model" />
+        <module name="plan-comptable-service" />
+        <module name="exercice-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="banque-service" target="17" />
+      <module name="base-model" target="17" />
+      <module name="chating-service" target="17" />
+      <module name="client-fourniseur-service" target="17" />
       <module name="config-service" target="17" />
       <module name="exercice-service" target="17" />
       <module name="gateway-service" target="17" />
       <module name="office-service" target="17" />
+      <module name="plan-comptable-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="banque-service" options="-parameters" />
+      <module name="base-model" options="-parameters" />
+      <module name="chating-service" options="-parameters" />
+      <module name="client-fourniseur-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="exercice-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="office-service" options="-parameters" />
+      <module name="plan-comptable-service" options="-parameters" />
     </option>
   </component>
 </project>

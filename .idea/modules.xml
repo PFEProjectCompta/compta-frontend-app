@@ -3,10 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$USER_HOME$/Desktop/spring pfe/banque-service/banque-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/banque-service/banque-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/base-model/base-model.iml" filepath="$USER_HOME$/Desktop/spring pfe/base-model/base-model.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/chating-service/chating-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/chating-service/chating-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/client-fourniseur-service/client-fourniseur-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/client-fourniseur-service/client-fourniseur-service.iml" />
       <module fileurl="file://$USER_HOME$/Desktop/spring pfe/config-service/config-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/config-service/config-service.iml" />
       <module fileurl="file://$USER_HOME$/Desktop/spring pfe/exercice-service/exercice-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/exercice-service/exercice-service.iml" />
       <module fileurl="file://$USER_HOME$/Desktop/spring pfe/gateway-service/gateway-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/gateway-service/gateway-service.iml" />
       <module fileurl="file://$USER_HOME$/Desktop/spring pfe/office-service/office-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/office-service/office-service.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/spring pfe/plan-comptable-service/plan-comptable-service.iml" filepath="$USER_HOME$/Desktop/spring pfe/plan-comptable-service/plan-comptable-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/projet-fin-etude.iml" filepath="$PROJECT_DIR$/projet-fin-etude.iml" />
     </modules>
   </component>

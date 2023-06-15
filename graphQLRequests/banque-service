@@ -1,0 +1,325 @@
+Agence:
+
+query{
+  agenceList{
+    id
+    nom
+    complement
+    banques{
+      id
+      abrege
+      compteBancaires{
+        id
+      }
+      contacts{
+        id
+        type_contact
+      }
+    }
+  }
+}
+----------------------------------
+query{
+  agenceById(id:"f44b203d-9d8d-4755-b891-705e2a59415e"){
+    id
+    nom
+    complement
+    banques{
+      id
+      abrege
+      compteBancaires{
+        id
+      }
+      contacts{
+        id
+        type_contact
+      }
+    }
+  }
+}
+-----------------------------------
+mutation{
+  ajouterAgence(agenceDTO:{
+    nom:"Wiam"
+    complement:"hje kjeqkj edlqk leklq"
+    code_postale:"40000"
+    ville:"Casa"
+    pays:"pays"
+
+  }){
+    id
+    nom
+    complement
+    ville
+    banques{
+      id
+    }
+  }
+}
+-------------------------------
+mutation{
+  modifierAgence(agenceDTO:{
+
+    complement:"l'agence de Marrakech"
+
+  },id:"f405972e-3299-4785-b6fa-b3e4bb9be8e8"){
+    id
+    nom
+    complement
+    ville
+    banques{
+      id
+    }
+  }
+}
+-----------------------------------
+mutation{
+  supprimerAgence(id:"f405972e-3299-4785-b6fa-b3e4bb9be8e8"){
+    id
+    nom
+    complement
+    ville
+    banques{
+      id
+    }
+  }
+}
+
+--------------------------------------------
+Banque :
+query{
+  banqueList{
+     id
+    compteBancaires{
+      id
+      banque{
+        id
+      }
+      num_compte
+    }
+    contacts{
+      id
+    }
+  }
+}
+
+Query{
+   banqueById(id:"ccba3253-9fbf-413f-87c8-a2471900153d"){
+    id
+    compteBancaires {
+      id
+      banque {
+        id
+      }
+      num_compte
+    }
+    contacts {
+      id
+    }
+  }
+}
+
+mutation{
+  ajouterBanque(banqueDTO:{
+    abrege:"abg"
+    intitule:"int"
+    interlocuteur:"inte"
+    codeBIC:"ëla"
+    adresse:"Marratkdwe ldkwlkdk ldkwldl"
+    code_postale:"30000"
+    ville:"Marrakech"
+    pays:"Maroc"
+    telephone:"09932823778"
+    telecopie:"07239092902"
+    email:"wlëdlëqëdq"
+    site_internet:"ëldqëllëdlëqlë"
+    agenceId:"8f1c02ea-bf39-4c57-a297-1b510ce18348"
+  }){
+    id
+    abrege
+    interlocuteur
+    agence{
+      id
+      nom
+    }
+    compteBancaires{
+      id
+    }
+  }
+}
+
+mutation{
+  modifierBanque(banqueDTO:{
+    abrege:"abrege"
+  },id:"facba5d1-d951-4a94-a8bf-76ef4377f92e"){
+    id
+    abrege
+    interlocuteur
+    agence{
+      id
+      nom
+    }
+    compteBancaires{
+      id
+    }
+  }
+}
+---------------------------------------------------------------
+CompteBancair:
+query{
+  compteBancaireList{
+    id
+    abrege
+    banque{
+      id
+      abrege
+      agence{
+        id
+        banques{
+          id
+        }
+      }
+    }
+  }
+}
+
+query{
+  compteBancaireById(id:"38bbfc7d-cd15-451f-bc60-9f4c526e6046"){
+    id
+    abrege
+    banque{
+      id
+      abrege
+      agence{
+        id
+        banques{
+          id
+        }
+      }
+    }
+  }
+}
+query{
+  compteBancaireById(id:"c8d8aec3-2929-4c09-be5c-2ccbd0bd743b"){
+    id
+    planComptableElementId
+    planComptableElement{
+      id
+      numeroCompte
+    }
+  }
+}
+mutation{
+  ajouterCompteBancaire(compteBancaireDTO:{
+    abrege:"lëllë"
+    devise:"De"
+    pays:"Maroc"
+    structure:"ëlsa"
+    num_compte:"988898"
+    num_guichet:"2112212"
+    banqueId:"051ccfdb-5510-415b-aaa6-7db68e65f08a"
+  	planComptableElementId:"4704e91e-2593-458b-a2a8-045515ffc34d"
+    societeId:"73ef9441-89ed-4ea1-a242-cec03b1a4e47"
+  }){
+    id
+    abrege
+    banque{
+      id
+    }
+  }
+}
+
+
+mutation{
+  modifierCompteBancaire(compteBancaireDTO:{
+    abrege:"abrge"
+
+
+  },id:"05e455d1-3aa0-4f0d-b492-d11320d423a9"){
+    id
+    abrege
+    banque{
+      id
+    }
+  }
+}
+
+mutation{
+  supprimerCompteBancaire(id:"05e455d1-3aa0-4f0d-b492-d11320d423a9"){
+    id
+    abrege
+    banque{
+      id
+    }
+  }
+}
+
+---------------------------------------------------------------------------
+Contact:
+
+query{
+  contactList{
+    id
+    banque{
+      id
+      agence{
+        id
+        banques{
+          id
+        }
+      }
+    }
+  }
+}
+
+query{
+  contactById(id:"7952fd3f-ff17-4e2b-81e1-c64516353cfc"){
+    id
+    type_contact
+    banque{
+      id
+    }
+  }
+}
+
+mutation{
+  ajouterContact(contactDTO:{
+    type_contact:"lkklkl"
+    civilite:"lkklkl"
+    nom:"poopop"
+    prenom:"pççwq"
+    service:"lëëlq"
+    fonction:"wëqlëq"
+    telephone:"00029199901"
+    portable:"029392939"
+    email:"kooefkqla"
+    telecopie:"052378782"
+    banqueId:"1e446524-fddb-41ba-9e3c-ba7e91ce1a83"
+  }){
+    id
+    type_contact
+    banque{
+      id
+    }
+  }
+}
+
+mutation{
+  modifierContact(contactDTO:{
+    nom:"Wiam"
+  },id:"bb652ce3-89ca-4a3d-b88a-e45e45b33afa"){
+    id
+    type_contact
+    nom
+    banque{
+      id
+    }
+  }
+}
+
+
+
+
+
+
+

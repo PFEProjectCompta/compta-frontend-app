@@ -1,0 +1,290 @@
+Admine bureau
+
+query{
+  adminesBureauList{
+    id
+  	bureaus{
+      id
+      compteUtilisateurs{
+        id
+        societes{
+          id
+        }
+      }
+    }
+  }
+}
+-------------------------------------------
+query{
+  admineById(id:"0ee9171c-2f95-48b6-879e-e71c7492901d"){
+    id
+  	bureaus{
+      id
+      compteUtilisateurs{
+        id
+        societes{
+          id
+        }
+      }
+    }
+  }
+}
+-------------------------------------------
+mutation{
+  ajouterBureauAdmine(admineBureauDTO:{
+    nom:"wiam"
+    prenom:"Laqssir"
+    email:"wiam@gmail.com"
+  }){
+    id
+    prenom
+    nom
+
+  }
+}
+----------------------------------------
+mutation($n : String,$i:String){
+  modifierBureauAdmine(admineBureauDTO:{
+    nom:$n
+  },id:$i){
+    id
+    prenom
+    nom
+
+  }
+}
+
+--------------------------------------------
+mutation($i:String){
+  supprimerBureauAdmine(id:$i){
+    id
+    prenom
+    nom
+
+  }
+}
+===============================================================
+Bureau:
+query{
+  bureauById(id:"df881d27-32b8-470c-8c32-b2103adfda2f"){
+    id
+  }
+}
+
+--------------------------------------------------
+query{
+  bureauList{
+    id
+  }
+}
+-----------------------------------------
+mutation{
+  ajouterBureau(bureauDTO:{
+    nom:"wim"
+    adresse:"Marrekech"
+    ville:"Marrakech"
+    paye:"Maroc"
+    numero_tele:"0392893889"
+    email:"wiam@gmail,com"
+    admineId:"ee56154d-733f-42d4-9875-4ac9bd898bed"
+
+  }){
+    id
+    nom
+    email
+    admine{
+    id
+  }
+  }
+}
+-------------------------------------------------------
+mutation{
+  modifierBureau(bureauDTO:{
+    nom:"wiam"
+
+
+  },id:"5a329222-989b-436c-9e27-04c716bb6df2"){
+    id
+    nom
+    email
+    admine{
+    id
+  }
+  }
+}
+--------------------------------------------------
+mutation{
+  supprimerBureau(id:"5a329222-989b-436c-9e27-04c716bb6df2"){
+    id
+    nom
+    email
+    admine{
+    id
+  }
+  }
+}
+================================================================
+CompteUtilisateur
+
+query{
+  compteUtilisateurList{
+    id
+    date_naissance
+    bureau{
+      id
+      compteUtilisateurs{
+        id
+      }
+    }
+    societes{
+      id
+      compteUtilisateur{
+        bureau{
+          id
+        }
+      }
+    }
+  }
+}
+
+---------------------------------------------------------
+query{
+  compteUtilisateurById(id:"d0de4f77-e504-46a9-9811-628b37e46603"){
+    id
+    bureau{
+      id
+    }
+    societes{
+      id
+    }
+  }
+}
+
+---------------------------------------------
+mutation{
+  ajouterCompteUtilisateur(compteUtilisateurDTO:{
+    nom:"lol"
+    prenom:"kkkk"
+    email:"klkllk"
+    adresse:"ëkëlë"
+    ville:"ëllël"
+    pays:"ëdlldl"
+    telephone:"kkkkk"
+    date_naissance:"2000/09/08"
+    actif:true
+    bureauId:"df881d27-32b8-470c-8c32-b2103adfda2f"
+  }){
+    id
+    nom
+    email
+    date_naissance
+    bureau{
+      id
+    }
+  }
+}
+----------------------------------------------------------------------
+mutation{
+  modifierCompteUtilisateur(compteUtilisateurDTO:{
+    nom:"wiam"
+
+  },id:"3576d9f2-49de-4c2a-820f-d38b15f7f5e1"){
+    id
+    nom
+    email
+    date_naissance
+    bureau{
+      id
+    }
+  }
+}
+---------------------------------------------------------
+mutation{
+  supprimerCompteUtilisateur(id:"3576d9f2-49de-4c2a-820f-d38b15f7f5e1"){
+    id
+    nom
+    email
+    date_naissance
+    bureau{
+      id
+    }
+  }
+}
+
+============================================================
+Societe:
+query{
+  societeById(id:"0c4278de-9946-4ae9-8870-245b9003cc17"){
+    id
+  }
+}
+--------------------------------
+query{
+  societeList{
+    id
+  }
+}
+--------------------------------------------
+mutation{
+  ajouterSociete(societeDTO:{
+    raison_social:"kdllkkl"
+    activite:"llll"
+    adresse:"lklkkl"
+    compteUtilisateurId:"d0de4f77-e504-46a9-9811-628b37e46603"
+  }){
+    id
+    raison_social
+    activite
+    adresse
+    compteUtilisateur{
+      id
+      bureau{
+        id
+        admine{id}
+      }
+      societes{
+        id
+      }
+    }
+  }
+}
+----------------------------------------------
+mutation{
+  modifierSociete(societeDTO:{
+    raison_social:"La marebel"
+  },id:"76cb2084-0f70-4d83-968b-e344960a962b"){
+    id
+    raison_social
+    activite
+    adresse
+    compteUtilisateur{
+      id
+      bureau{
+        id
+        admine{id}
+      }
+      societes{
+        id
+      }
+    }
+  }
+}
+------------------------------------------
+mutation{
+  supprimerSociete(id:"76cb2084-0f70-4d83-968b-e344960a962b"){
+    id
+    raison_social
+    activite
+    adresse
+    compteUtilisateur{
+      id
+      bureau{
+        id
+        admine{id}
+      }
+      societes{
+        id
+      }
+    }
+  }
+}

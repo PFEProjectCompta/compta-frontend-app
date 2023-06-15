@@ -1,0 +1,82 @@
+===============================Plan comptable service===========================
+compte generaux:
+query{
+   compteGeneralById(id:"a850422a-ff9c-45d2-84c7-991fb1b09ae7"){
+    id
+    natureCompte
+    debutFaurchette
+    finFaurchette
+  }
+}
+...
+==========================================================================
+
+PlanComptable:
+query{
+   planComptableElementList{
+    id
+    numeroCompte
+    compteGeneral{
+      id
+      natureCompte
+    }
+  }
+}
+--------------------------------------------
+query{
+   planComptableElementById(id:"4704e91e-2593-458b-a2a8-045515ffc34d"){
+    id
+    numeroCompte
+    compteGeneral{
+      id
+      natureCompte
+    }
+  }
+}
+
+
+------------------------------------
+mutation{
+   ajouterplanComptableElement(planComptableElementDTO:{
+    numeroCompte:"31000990"
+    intitule:"La vente des fournitures"
+    reporter:true
+    compteGeneralId:"99c796d3-8d76-4d6a-808b-81468ae413d0"
+  }){
+    id
+    numeroCompte
+    compteGeneral{
+      id
+      natureCompte
+    }
+  }
+}
+
+-------------------------------
+  mutation{
+     modifierplanComptableElement(planComptableElementDTO:{
+      intitule:"La vente des fournitures & bureau"
+    },id:"101206fa-1b4c-4bd3-b925-41b2d11dea2b"){
+      id
+      numeroCompte
+      intitule
+      compteGeneral{
+        id
+        natureCompte
+
+      }
+    }
+  }
+-------------------------------
+  mutation{
+     supprimerplanComptableElement(id:"101206fa-1b4c-4bd3-b925-41b2d11dea2b"){
+      id
+      numeroCompte
+      intitule
+      compteGeneral{
+        id
+        natureCompte
+
+      }
+    }
+  }

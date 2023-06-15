@@ -8,6 +8,10 @@
         <option value="$USER_HOME$/Desktop/spring pfe/exercice-service/pom.xml" />
         <option value="$USER_HOME$/Desktop/spring pfe/banque-service/pom.xml" />
         <option value="$USER_HOME$/Desktop/spring pfe/gateway-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/plan-comptable-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/client-fourniseur-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/chating-service/pom.xml" />
+        <option value="$USER_HOME$/Desktop/spring pfe/base-model/pom.xml" />
       </list>
     </option>
   </component>
