@@ -22,7 +22,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "keycloak.json",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/custom-theme.scss",
@@ -39,8 +44,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -71,7 +76,8 @@
               "browserTarget": "compta-frontend-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

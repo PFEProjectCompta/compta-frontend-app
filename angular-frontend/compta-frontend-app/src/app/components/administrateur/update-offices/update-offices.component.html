@@ -1,0 +1,56 @@
+<form (ngSubmit)="updateBureau(updateUserForm)" #updateUserForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nom de bureau</mat-label>
+            <input matInput placeholder="Placeholder" name="nom_bureau" [(ngModel)]="nom_bureau">
+            <mat-icon matSuffix>card_travel_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Placeholder" name="adresse" [(ngModel)]="adresse">
+            <mat-icon matSuffix>room_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> business_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input matInput placeholder="Placeholder" name="num_telephone" [(ngModel)]="num_telephone">
+            <mat-icon matSuffix>contact_phone_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse email</mat-label>
+            <input matInput placeholder="Placeholder" name="email" [(ngModel)]="email">
+            <mat-icon matSuffix>alternate_email_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+    <div class="row"><button type="submit" class="btn btn-primary">Modifier</button></div>
+  </div>
+</form>

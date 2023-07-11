@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+}
+
+.hover_lign{
+  background-color: antiquewhite;
+}
+.centred{
+  text-align: center;
+}
+.add-role-button{
+  width: 30px;
+  height: 30px;
+}
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.element-row {
+  position: relative;
+}
+
+.element-row:not(.expanded) {
+  cursor: pointer;
+}
+
+.element-row:not(.expanded):hover {
+  background: #f5f5f5;
+}
+
+.element-row.expanded {
+  border-bottom-color: transparent;
+}
+

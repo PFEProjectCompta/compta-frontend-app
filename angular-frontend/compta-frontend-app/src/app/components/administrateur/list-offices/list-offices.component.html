@@ -1,0 +1,51 @@
+<form>
+  <input type="text" #searchInputRef (input)="filterItems()" class="form-control" placeholder="Search"
+         aria-label="Search">
+</form>
+<table mat-table [dataSource]="inputElement?dataSourceBackup:dataSourceBureaux" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Bureau</th>
+    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="adresse">
+    <th mat-header-cell *matHeaderCellDef> Adresse </th>
+    <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="numero_tele">
+    <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+    <td mat-cell *matCellDef="let element"> {{element.numero_tele}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ville">
+    <th mat-header-cell *matHeaderCellDef> Ville </th>
+    <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="paye">
+    <th mat-header-cell *matHeaderCellDef> Pays </th>
+    <td mat-cell *matCellDef="let element"> {{element.paye}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-fab color="basic" class="action-button update-role-button" [routerLink]="['../compte-user',element.id]"  ><mat-icon> face_icon</mat-icon></button>
+      <button mat-fab color="warn" class="action-button delete-button" (click)="removeBureau(element.id)" ><mat-icon>delete_icon</mat-icon></button>
+      <button mat-fab color="primary" class="action-button update-button" [routerLink]="['../update-office',element.id]"  ><mat-icon>update_icon</mat-icon></button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+

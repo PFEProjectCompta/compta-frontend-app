@@ -1,0 +1,7 @@
+{
+  "realm": "compta-realm",
+  "auth-server-url": "http://localhost:9900",
+  "resource": "office-client",
+  "onLoad":"login-required",
+  "checkLoginIframe":true
+}

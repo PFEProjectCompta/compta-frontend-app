@@ -13,8 +13,10 @@
         <module name="office-service" />
         <module name="banque-service" />
         <module name="chating-service" />
+        <module name="security-service" />
         <module name="base-model" />
         <module name="plan-comptable-service" />
+        <module name="demo" />
         <module name="exercice-service" />
       </profile>
     </annotationProcessing>
@@ -24,10 +26,12 @@
       <module name="chating-service" target="17" />
       <module name="client-fourniseur-service" target="17" />
       <module name="config-service" target="17" />
+      <module name="demo" target="17" />
       <module name="exercice-service" target="17" />
       <module name="gateway-service" target="17" />
       <module name="office-service" target="17" />
       <module name="plan-comptable-service" target="17" />
+      <module name="security-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -37,10 +41,12 @@
       <module name="chating-service" options="-parameters" />
       <module name="client-fourniseur-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
+      <module name="demo" options="-parameters" />
       <module name="exercice-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="office-service" options="-parameters" />
       <module name="plan-comptable-service" options="-parameters" />
+      <module name="security-service" options="-parameters" />
     </option>
   </component>
 </project>

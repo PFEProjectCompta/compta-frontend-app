@@ -1,0 +1,126 @@
+<form (ngSubmit)="addSociete(addSocieteForm)" #addSocieteForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Raison social</mat-label>
+            <input matInput placeholder="Placeholder" name="raison_social" [(ngModel)]="raison_social">
+            <mat-icon matSuffix>card_travel_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Activité</mat-label>
+            <input matInput placeholder="Placeholder" name="activite" [(ngModel)]="activite">
+            <mat-icon matSuffix>local_activity_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Placeholder" name="adresse" [(ngModel)]="adresse">
+            <mat-icon matSuffix>location_on_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </div>
+
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Devise</mat-label>
+            <input matInput placeholder="Placeholder" name="devise" [(ngModel)]="devise">
+            <mat-icon matSuffix>bar_chart_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse email</mat-label>
+            <input matInput placeholder="Placeholder" name="email" [(ngModel)]="email">
+            <mat-icon matSuffix>alternate_email_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> business_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Forme juridique</mat-label>
+            <input matInput placeholder="Placeholder" name="forme_juridique" [(ngModel)]="forme_juridique">
+            <mat-icon matSuffix>bubble_chart_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+
+      </div>
+  <div class="col-auto">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Numéro de dossier</mat-label>
+        <input matInput placeholder="Placeholder" name="num_dossier" [(ngModel)]="num_dossier">
+        <mat-icon matSuffix> file_copy_icon</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Identifiant TVA</mat-label>
+        <input matInput placeholder="Placeholder" name="identifiant_TVA" [(ngModel)]="identifiant_TVA">
+        <mat-icon matSuffix>grain_icon</mat-icon>
+
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Site internet</mat-label>
+        <input matInput placeholder="Placeholder" name="site_internet" [(ngModel)]="site_internet">
+        <mat-icon matSuffix>pages_icon</mat-icon>
+
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Numéro de téléphone</mat-label>
+        <input matInput placeholder="Placeholder" name="telephone" [(ngModel)]="telephone">
+        <mat-icon matSuffix>contact_phone_icon</mat-icon>
+
+      </mat-form-field>
+    </p>
+  </div>
+    </div>
+    <div class="row d-flex align-items-center justify-content-center">
+     <div class="col-auto">
+       <p>
+         <mat-form-field appearance="fill">
+           <mat-label>Capital</mat-label>
+           <input matInput placeholder="Placeholder" type="number" name="capital" [(ngModel)]="capital">
+           <mat-icon matSuffix>attach_money_icon</mat-icon>
+
+         </mat-form-field>
+       </p>
+     </div>
+    </div>
+
+  </div>
+  <div class="row"><button type="submit" class="btn btn-primary">Ajouter</button></div>
+
+</form>
+
+<a href="#" [routerLink]="['../../societes']">retourner</a>

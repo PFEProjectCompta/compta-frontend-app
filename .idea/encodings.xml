@@ -11,6 +11,8 @@
     <file url="file://$USER_HOME$/Desktop/spring pfe/client-fourniseur-service/src/main/resources" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/config-service/src/main/java" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/config-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/spring pfe/demo/src/main/java" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/spring pfe/demo/src/main/resources" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/exercice-service/src/main/java" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/exercice-service/src/main/resources" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/gateway-service/src/main/java" charset="UTF-8" />
@@ -19,5 +21,6 @@
     <file url="file://$USER_HOME$/Desktop/spring pfe/office-service/src/main/resources" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/plan-comptable-service/src/main/java" charset="UTF-8" />
     <file url="file://$USER_HOME$/Desktop/spring pfe/plan-comptable-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Desktop/spring pfe/security-service/src/main/java" charset="UTF-8" />
   </component>
 </project>

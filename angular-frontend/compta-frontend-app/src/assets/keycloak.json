@@ -1,0 +1,8 @@
+{
+  "realm": "compta-realm",
+  "auth-server-url": "http://localhost:9900",
+  "ssl-required": "external",
+  "resource": "office-client",
+  "public-client": true,
+  "confidential-port": 0
+}

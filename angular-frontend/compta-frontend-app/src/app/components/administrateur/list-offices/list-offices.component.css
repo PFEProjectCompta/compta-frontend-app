@@ -1,0 +1,18 @@
+table {
+  width: 90%;
+}
+form{
+  width:100%;
+  margin-bottom: 12px;
+}
+.action-button{
+  width: 30px;
+  height: 30px;
+}
+.delete-button{
+  margin-right: 5px;
+}
+
+.update-button{
+  margin-right: 5px;
+}

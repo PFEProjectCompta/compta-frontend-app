@@ -1,0 +1,8 @@
+{
+  "/keycloak.json": {
+    "target": "http://localhost:4200/assets/keycloak.json",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

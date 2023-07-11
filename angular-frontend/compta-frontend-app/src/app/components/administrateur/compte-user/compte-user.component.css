@@ -1,0 +1,20 @@
+.btn-bottom-gap{
+  margin-bottom: 10px;
+}
+
+table {
+  width: 90%;
+  margin-bottom: 10%;
+}
+
+.action-button{
+  width: 30px;
+  height: 30px;
+}
+.add-role-button{
+  margin-right: 5px;
+}
+
+.update-button{
+  margin-right: 5px;
+}

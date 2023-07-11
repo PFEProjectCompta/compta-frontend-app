@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Chat App</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">Contacter les autres !</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -9,49 +10,88 @@
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
 
       </ul>
-      <form>
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </form>
+
     </div>
   </div>
 </nav>
-
 <main class="chat">
   <div class="container">
-    <div class="chat-content">
-      <div class="card">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <strong>Wiam</strong>
-            <span>hi!</span>
-          </li>
-          <li class="list-group-item">
-            <strong>Wiam</strong>
-            <span>hi!</span>
-          </li>
-        </ul>
+    <div class="row">
+      <div class="col-3">
+
+        <form>
+          <input type="text" #searchInputRef (input)="filterItems()" class="form-control" placeholder="Search"
+                 aria-label="Search">
+        </form>
+        <div class="card overflow-y-scroll">
+          <ul *ngIf="inputElement" class=" list-group list-group-flush ">
+            <div *ngFor="let sender of groupByName | keyvalue" class="list-item-all ">
+              <li class="notification list-group-item center-notification"
+                  [ngClass]="{'selecte-recever':sender.key===recever_selected_username }"
+                  (click)="showConversationNotification(sender.value)">
+                <mat-icon>account_circle</mat-icon>
+                <strong>{{ sender.key }}</strong>
+                <p class="number-notif">{{sender.value.length}}</p>
+              </li>
+            </div>
+            <div *ngFor="let user of dataSourceBackup" class="list-item-all ">
+              <li *ngIf="user.id!=id && user.id!='2dbabe35-9b35-4687-8d5e-782680c025d2'"
+                  class="list-group-item center-notification"
+                  [ngClass]="{'selecte-recever':user.id===recever_selected_id }"
+                  (click)="showConversation(user.id,user.userName)">
+                <mat-icon>account_circle</mat-icon>
+                <strong>{{user.userName}}</strong>
+              </li>
+            </div>
+          </ul>
+          <ul *ngIf="!inputElement" class=" list-group list-group-flush ">
+            <div *ngFor="let sender of groupByName | keyvalue" class="list-item-all ">
+              <li class="notification list-group-item center-notification"
+                  [ngClass]="{'selecte-recever':sender.key===recever_selected_username }"
+                  (click)="showConversationNotification(sender.value)">
+                <mat-icon>account_circle</mat-icon>
+                <strong>{{ sender.key }}</strong>
+                <p class="number-notif">{{sender.value.length}}</p>
+              </li>
+            </div>
+            <div *ngFor="let user of dataSource" class="list-item-all ">
+              <li *ngIf="user.id!=id && user.id!='2dbabe35-9b35-4687-8d5e-782680c025d2'"
+                  class="list-group-item center-notification"
+                  [ngClass]="{'selecte-recever':user.id===recever_selected_id }"
+                  (click)="showConversation(user.id,user.userName)">
+                <mat-icon>account_circle</mat-icon>
+                <strong>{{user.userName}}</strong>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="chat-content">
+          <div class="card" #scrollMe style="overflow: scroll;">
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let msg of dms" class="list-group-item">
+                <strong>{{msg.senderName}} : </strong>
+                <span>{{msg.content}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+          <div class="chat-send row">
+
+            <div class="col-10">
+              <input type="text" class="form-control" name="message" id="input-message" [(ngModel)]="input">
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+
+          </div>
+        </form>
       </div>
     </div>
-
-    <form (ngSubmit)="name(nameForm)" #nameForm="ngForm">
-      <input class="form-control" type="text" placeholder="name" name="name" id="name" ngModel>
-      <button type="submit" class="btn btn-primary">Name</button>
-    </form>
-
-    <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
-      <div class="chat-send row">
-        <div class="col-2">
-          <input type="text" class="form-control" name="user" id="input-user" ngModel>
-        </div>
-        <div class="col-8">
-          <input type="text" class="form-control" name="message" id="input-message" ngModel>
-        </div>
-        <div class="col-2">
-          <button type="submit" class="btn btn-primary">Send</button>
-        </div>
-
-      </div>
-    </form>
   </div>
-
 </main>

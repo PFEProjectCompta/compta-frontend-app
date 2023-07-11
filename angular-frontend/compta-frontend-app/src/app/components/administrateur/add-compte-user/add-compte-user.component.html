@@ -1,0 +1,82 @@
+<form (ngSubmit)="addUser(addUserForm)" #addUserForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Placeholder" name="nom" [(ngModel)]="nom">
+            <mat-icon matSuffix>perm_identity_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Placeholder" name="adresse" [(ngModel)]="adresse">
+            <mat-icon matSuffix>room_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Date naissance</mat-label>-->
+<!--            <input matInput placeholder="Placeholder" type="date" name="email" [(ngModel)]="date_naissance">-->
+<!--            <mat-icon matSuffix>date_range_icon</mat-icon>-->
+<!--          </mat-form-field>-->
+          <mat-form-field appearance="outline">
+            <mat-label>Date naissance</mat-label>
+            <input matInput [matDatepicker]="picker" name="date_naissance" [(ngModel)]="date_naissance">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Prenom</mat-label>
+            <input matInput placeholder="Placeholder" name="prenom" [(ngModel)]="prenom">
+            <mat-icon matSuffix>perm_identity_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input matInput placeholder="Placeholder" name="telephone" [(ngModel)]="telephone">
+            <mat-icon matSuffix>contact_phone_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse email</mat-label>
+            <input matInput placeholder="Placeholder" name="email" [(ngModel)]="email">
+            <mat-icon matSuffix>alternate_email_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> business_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+
+
+      </div>
+    </div>
+    <div class="row"><button type="submit" class="btn btn-primary">Ajouter</button></div>
+
+</form>
