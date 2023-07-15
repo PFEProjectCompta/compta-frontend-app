@@ -126,4 +126,81 @@ const GET_COMPTE_UTILISATEUR=gql`
     }
   }
 `
-export {GET_ADMINE,GET_EXERCICES,GET_USERNAME,MESSAGES_CHAT,COUNT_NEW_MESSAGES,GET_BUREAUX,GET_BUREAU_BY_ID,GET_COMPTE_UTILISATEUR}
+
+const GET_SOCIETE=gql`
+  query($idUtilisateur:String){
+    societeByIdUtilisateur(idUtilisateur:$idUtilisateur){
+      id
+      raison_social
+      activite
+      adresse
+      compteUtilisateur{
+        id
+        nom
+        prenom
+      }
+      ville
+      pays
+      devise
+      forme_juridique
+      capital
+      telephone
+      email
+      site_internet
+      num_dossier
+      identifiant_TVA
+    }
+  }
+`
+
+const GET_SOCIETE_BY_ID=gql`
+  query($idSociete:String){
+    societeById(id:$idSociete){
+      id
+      raison_social
+      activite
+      adresse
+      compteUtilisateur{
+        id
+        nom
+        prenom
+      }
+      ville
+      pays
+      devise
+      forme_juridique
+      capital
+      telephone
+      email
+      site_internet
+      num_dossier
+      identifiant_TVA
+    }
+  }
+`
+
+const GET_SOCIETE_MEMBERS=gql`
+  query($id:String){
+    membersList(id:$id){
+      id
+      societe{
+        id
+        raison_social
+      }
+      createur{
+        id
+        nom
+        prenom
+        email
+      }
+      member{
+        id
+        nom
+        prenom
+        email
+      }
+    }
+  }
+`
+export {GET_ADMINE,GET_EXERCICES,GET_USERNAME,MESSAGES_CHAT,COUNT_NEW_MESSAGES,GET_BUREAUX,
+  GET_BUREAU_BY_ID,GET_COMPTE_UTILISATEUR,GET_SOCIETE,GET_SOCIETE_BY_ID,GET_SOCIETE_MEMBERS}

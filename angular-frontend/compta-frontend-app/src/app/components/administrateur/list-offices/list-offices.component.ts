@@ -29,6 +29,7 @@ export class ListOfficesComponent {
   }
 
   loadBureaux(){
+    console.log("Lolo")
     this.adminService.getBureaux(this.id).subscribe(bureaux => {
       console.log(bureaux)
       this.dataSourceBureaux=bureaux;

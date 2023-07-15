@@ -15,11 +15,7 @@ import {AdminService} from "../../services/office-service/AdminService";
 export class UtilisateurComponent {
 
   constructor(public userService: UserService) {
-    console.log("hhjhjhjhjhj : ",userService.profile);
-    this.userService.loadAdminsToSuperAdmin().subscribe(admins => {
-      console.log("wawawawa : ",admins);
 
-    });
   }
 
 }

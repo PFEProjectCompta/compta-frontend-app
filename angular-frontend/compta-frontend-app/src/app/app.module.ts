@@ -42,6 +42,10 @@ import { UtilisateurComponent } from './components/utilisateur/utilisateur.compo
 import {UserService} from "./services/office-service/UserService";
 import { SocieteComponent } from './components/utilisateur/societe/societe.component';
 import { AddSocieteComponent } from './components/utilisateur/societe/add-societe/add-societe.component';
+import { DetailsSocieteComponent } from './components/utilisateur/societe/details-societe/details-societe.component';
+import { UpdateSocieteComponent } from './components/utilisateur/societe/update-societe/update-societe.component';
+import { PlanComptableComponent } from './components/utilisateur/plan-comptable/plan-comptable.component';
+import { TraitementComponent } from './components/utilisateur/traitement/traitement.component';
 
 export function kcFactory(kcService: KeycloakService) {
 
@@ -76,7 +80,12 @@ export function kcFactory(kcService: KeycloakService) {
     ConfirmationDialogComponent,
     UtilisateurComponent,
     SocieteComponent,
-    AddSocieteComponent
+    AddSocieteComponent,
+    DetailsSocieteComponent,
+    UpdateSocieteComponent,
+    PlanComptableComponent,
+    TraitementComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -97,7 +106,7 @@ export function kcFactory(kcService: KeycloakService) {
     MatNativeDateModule,
     MomentDateModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     // {

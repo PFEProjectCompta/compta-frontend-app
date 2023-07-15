@@ -9,6 +9,7 @@ const usernames = 'http://localhost:8087/graphql';
 const security = 'http://localhost:8087/graphql';
 const chat = 'http://localhost:8086/graphql';
 const office = 'http://localhost:8081/graphql';
+const test = 'http://localhost:9000/office-service/graphql';
 export function createApollo(httpLink: HttpLink): NamedOptions {
   return {
       admins:{
@@ -34,7 +35,11 @@ export function createApollo(httpLink: HttpLink): NamedOptions {
     office:{
         link: httpLink.create({uri:office}),
         cache: new InMemoryCache(),
-      }
+      },
+    test:{
+      link: httpLink.create({uri:test}),
+      cache: new InMemoryCache(),
+    }
   };
 }
 

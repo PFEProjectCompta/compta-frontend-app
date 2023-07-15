@@ -13,6 +13,10 @@ import {UpdateCompteUserComponent} from "./components/administrateur/update-comp
 import {UtilisateurComponent} from "./components/utilisateur/utilisateur.component";
 import {SocieteComponent} from "./components/utilisateur/societe/societe.component";
 import {AddSocieteComponent} from "./components/utilisateur/societe/add-societe/add-societe.component";
+import {UpdateSocieteComponent} from "./components/utilisateur/societe/update-societe/update-societe.component";
+import {DetailsSocieteComponent} from "./components/utilisateur/societe/details-societe/details-societe.component";
+import {PlanComptableComponent} from "./components/utilisateur/plan-comptable/plan-comptable.component";
+import {TraitementComponent} from "./components/utilisateur/traitement/traitement.component";
 
 const routes: Routes = [
   {path: 'sec',component:SecurityComponent},
@@ -37,9 +41,13 @@ const routes: Routes = [
         path:'societes',
         component:SocieteComponent,
         children:[
-          {path: 'add-societe',component:AddSocieteComponent}
+          {path: 'add-societe',component:AddSocieteComponent},
+          {path: 'update-societe/:idSociete',component:UpdateSocieteComponent},
+          {path: 'details-societe/:idSociete',component:DetailsSocieteComponent}
         ]
-      }
+      },
+      {path: 'plan-comptable/:idSociete',component:PlanComptableComponent},
+      {path: 'traitement/:idSociete',component:TraitementComponent},
     ]
   },
 ];

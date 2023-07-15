@@ -19,7 +19,7 @@ import {
   UPDATE_BUREAU, UPDATE_COMPTE_UTILISATEUR_ACTIF
 } from "../../graphql/mutations.graphql";
 import { HttpLink } from 'apollo-angular/http';
-import {InMemoryCache} from "@apollo/client/core";
+import {ApolloClient, ApolloLink, InMemoryCache} from "@apollo/client/core";
 import {KeycloakEventType, KeycloakService} from "keycloak-angular";
 import {KeycloakProfile} from "keycloak-js";
 import {Bureau} from "../../components/models/office-app/Bureau";
@@ -42,6 +42,8 @@ export class AdminService{
     this.init();
     const options1: any = { uri: 'http://localhost:8087/graphql' };
     const options2: any = { uri: 'http://localhost:8081/graphql' };
+    const options3: any = { uri: 'http://localhost:9000/office-service/graphql' };
+
     apollo.createDefault({
       link: httpLink.create(options1),
       cache: new InMemoryCache()
@@ -50,6 +52,8 @@ export class AdminService{
       link:httpLink.create(options2),
       cache:new InMemoryCache()
     })
+
+
 
   }
 
@@ -194,6 +198,7 @@ export class AdminService{
       );
   }
   getBureaux(idAdministrateur): Observable<any[]> {
+    console.log("hohoho: ")
     return this.apollo.use('office')
       .watchQuery<any>({
         query: GET_BUREAUX,
@@ -204,7 +209,7 @@ export class AdminService{
       .valueChanges.pipe(
         map(({ data, loading }) => {
           this.loading = loading;
-          // console.log("hohoho: " ,)
+          console.log("hohoho: ")
           this.dataSourceBureaux = data.bureauListByAdminId;
           return data.bureauListByAdminId;
         })
