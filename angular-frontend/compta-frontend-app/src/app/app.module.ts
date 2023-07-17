@@ -12,7 +12,7 @@ import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import { ChatComponent } from './components/chat/chat.component';
 import { SecurityComponent } from './components/security/security.component';
 import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {AdminService} from "./services/office-service/AdminService";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {SharedService} from "./services/shared/SharedService";
@@ -44,9 +44,16 @@ import { SocieteComponent } from './components/utilisateur/societe/societe.compo
 import { AddSocieteComponent } from './components/utilisateur/societe/add-societe/add-societe.component';
 import { DetailsSocieteComponent } from './components/utilisateur/societe/details-societe/details-societe.component';
 import { UpdateSocieteComponent } from './components/utilisateur/societe/update-societe/update-societe.component';
-import { PlanComptableComponent } from './components/utilisateur/plan-comptable/plan-comptable.component';
+import { PlanComptableComponent } from './components/utilisateur/traitement/plan-comptable/plan-comptable.component';
 import { TraitementComponent } from './components/utilisateur/traitement/traitement.component';
-
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { ShareSocieteComponent } from './components/utilisateur/traitement/share-societe/share-societe.component';
+import { ListSharedSocieteComponent } from './components/utilisateur/list-shared-societe/list-shared-societe.component';
+import {
+  ComptesGenerauxComponent
+} from "./components/utilisateur/traitement/plan-comptable/comptes-generaux/comptes-generaux.component";
+import { UpdateComptesGenerauxComponent } from './components/utilisateur/traitement/plan-comptable/update-comptes-generaux/update-comptes-generaux.component';
+import { UpdatePlanComptableComponent } from './components/utilisateur/traitement/plan-comptable/update-plan-comptable/update-plan-comptable.component';
 export function kcFactory(kcService: KeycloakService) {
 
   return ()=>{
@@ -85,7 +92,11 @@ export function kcFactory(kcService: KeycloakService) {
     UpdateSocieteComponent,
     PlanComptableComponent,
     TraitementComponent,
-
+    ShareSocieteComponent,
+    ListSharedSocieteComponent,
+    ComptesGenerauxComponent,
+    UpdateComptesGenerauxComponent,
+    UpdatePlanComptableComponent
   ],
   imports: [
     BrowserModule,
@@ -107,6 +118,8 @@ export function kcFactory(kcService: KeycloakService) {
     MomentDateModule,
     MatDialogModule,
     BrowserAnimationsModule,
+    MatPaginatorModule,
+
   ],
   providers: [
     // {

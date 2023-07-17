@@ -380,7 +380,92 @@ const REMOVE_MEMBER_TO_SOCIETE=gql`
     }
   }
 `
+const ADD_COMPTES_GENERAUX_SOCIETE=gql`
+  mutation($id:String){
+    ajouterCompteGeneralAll(idSociete:$id){
+      id
+      natureCompte
+      debutFaurchette
+      finFaurchette
+      idSociete
+    }
+  }
+`
+const Modifier_COMPTES_GENERAUX=gql`
+  mutation($id:String,$debut:String,$fin:String){
+    modifierCompteGeneral(compteGeneralDTO:{
+      debutFaurchette:$debut,
+      finFaurchette:$fin
+    },id:$id){
+      id
+      natureCompte
+      debutFaurchette
+      finFaurchette
+      idSociete
+    }
+  }
+`
+
+const AJOUTER_PLANCOMPATNLE_ELEMENT=gql`
+  mutation($num:String,$intit:String,$societeId:String){
+    ajouterplanComptableElementSociete(planComptableElementSocieteDTO:{
+      numeroCompte:$num,
+      intitule:$intit
+      societeId:$societeId
+    }){
+      id
+      numeroCompte
+      intitule
+      reporter
+      compteGeneral{
+        id
+        natureCompte
+        debutFaurchette
+        idSociete
+      }
+      societeId
+    }
+  }
+`
+const MODIFIER_PLANCOMPATNLE_ELEMENT=gql`
+  mutation($id:String,$num:String,$intit:String,$compGen:String){
+    modifierplanComptableElement(planComptableElementDTO:{
+      numeroCompte:$num,
+      intitule:$intit,
+      compteGeneralId:$compGen
+    },id:$id){
+      id
+      numeroCompte
+      intitule
+      reporter
+      compteGeneral{
+        id
+        natureCompte
+        debutFaurchette
+        finFaurchette
+        idSociete
+      }
+      societeId
+    }
+  }
+`
+const SUPPRIMER_PLANCOMPATNLE_ELEMENT=gql`
+  mutation($id:String){
+    supprimerplanComptableElement(id:$id){
+      id
+      numeroCompte
+      intitule
+      compteGeneral{
+        id
+        natureCompte
+      }
+      societeId
+    }
+  }
+`
 export {ADD_ROLE,REMOVE_ROLE,ADD_ADMIN,REMOVE_ADMIN,ADD_BUREAU,UPDATE_BUREAU,REMOVE_BUREAU,
   ADD_COMPTE_UTILISATEUR,REMOVE_COMPTE_UTILISATEUR,ADD_KEYCLOAK_USER,ADD_USER_ROLE,REMOVE_USER_ROLE,
   UPDATE_COMPTE_UTILISATEUR_ACTIF,UPDATE_COMPTE_UTILISATEUR,ADD_SOCIETE,UPDATE_SOCIETE,
-  REMOVE_SOCIETE,ADD_MEMBER_TO_SOCIETE,REMOVE_MEMBER_TO_SOCIETE};
+  REMOVE_SOCIETE,ADD_MEMBER_TO_SOCIETE,REMOVE_MEMBER_TO_SOCIETE,ADD_COMPTES_GENERAUX_SOCIETE,
+  Modifier_COMPTES_GENERAUX,AJOUTER_PLANCOMPATNLE_ELEMENT,MODIFIER_PLANCOMPATNLE_ELEMENT,
+  SUPPRIMER_PLANCOMPATNLE_ELEMENT};

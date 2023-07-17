@@ -1,0 +1,62 @@
+<button class="action-button" mat-fab color="basic"  [routerLink]="['../../../compte-generaux',idSociete]"  ><mat-icon> keyboard_arrow_left_icon</mat-icon></button>
+
+<form (ngSubmit)="updatePlanComptable(updatePlanComptableForm)" #updatePlanComptableForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nature de compte</mat-label>
+            <input matInput placeholder="Placeholder" name="numeroCompte" [(ngModel)]="numeroCompte">
+            <mat-icon matSuffix>card_travel_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+
+
+
+      </div>
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Début fourchette</mat-label>
+            <input matInput placeholder="Placeholder" name="intitule" [(ngModel)]="intitule">
+            <mat-icon matSuffix>local_activity_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </div>
+      <div class="col-auto">
+
+        <p>
+<!--          <mat-form-field appearance="fill">-->
+<!--            <mat-label>Fin fourchette</mat-label>-->
+<!--            <input matInput placeholder="Placeholder" name="compteGeneral" [(ngModel)]="compteGeneral">-->
+<!--            <mat-icon matSuffix>location_on_icon</mat-icon>-->
+<!--          </mat-form-field>-->
+
+          <mat-form-field>
+            <mat-label>Compte généraux</mat-label>
+            <select matNativeControl required name="compteGeneral" [(ngModel)]="compteGeneral">
+              <option *ngFor="let compte of dataSourceComptesGeneraux" [value]="compte.id">{{ compte.natureCompte}} ( {{compte.debutFaurchette}} - {{compte.finFaurchette}} )</option>
+            </select>
+          </mat-form-field>
+        </p>
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row d-flex align-items-center justify-content-center div-btn">
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary flex-fill">Modifier</button>
+    </div>
+  </div>
+
+</form>
+
+

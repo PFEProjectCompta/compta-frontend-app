@@ -61,7 +61,7 @@ export class UpdateSocieteComponent{
       updateSocieteForm.value.telephone, updateSocieteForm.value.email, updateSocieteForm.value.site_internet,
       updateSocieteForm.value.num_dossier, updateSocieteForm.value.identifiant_TVA);
     this.userService.updateSociete(this.idSociete,societe);
-    this.sharedService.setData(true);
+    // this.sharedService.setData(true);
     this.router.navigate(['../utilisateur/societes'])
 
 

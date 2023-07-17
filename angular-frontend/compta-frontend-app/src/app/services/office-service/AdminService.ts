@@ -42,14 +42,17 @@ export class AdminService{
     this.init();
     const options1: any = { uri: 'http://localhost:8087/graphql' };
     const options2: any = { uri: 'http://localhost:8081/graphql' };
-    const options3: any = { uri: 'http://localhost:9000/office-service/graphql' };
-
+    const options3: any = { uri: 'http://localhost:8083/graphql' };
     apollo.createDefault({
       link: httpLink.create(options1),
       cache: new InMemoryCache()
     });
     apollo.createNamed('options2',{
       link:httpLink.create(options2),
+      cache:new InMemoryCache()
+    })
+    apollo.createNamed('options3',{
+      link:httpLink.create(options3),
       cache:new InMemoryCache()
     })
 

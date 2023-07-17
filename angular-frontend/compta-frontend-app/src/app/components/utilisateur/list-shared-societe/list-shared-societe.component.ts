@@ -1,25 +1,18 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {UserService} from "../../../services/office-service/UserService";
-import {Router, NavigationEnd} from "@angular/router";
-import {filter} from 'rxjs/operators';
-import {ConfirmationDialogService} from "../../../services/confirmation-dialog/ConfirmationDialogService";
-import {SharedService} from "../../../shared/shared.service";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {MatPaginator, MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-
-interface ConfirmationDialogData {
-  title: string;
-  message: string;
-}
+import {MatPaginator} from "@angular/material/paginator";
+import {HttpClient} from "@angular/common/http";
+import {SharedService} from "../../../shared/shared.service";
+import {UserService} from "../../../services/office-service/UserService";
+import {Router} from "@angular/router";
+import {ConfirmationDialogService} from "../../../services/confirmation-dialog/ConfirmationDialogService";
 
 @Component({
-  selector: 'app-societe',
-  templateUrl: './societe.component.html',
-  styleUrls: ['./societe.component.css']
+  selector: 'app-list-shared-societe',
+  templateUrl: './list-shared-societe.component.html',
+  styleUrls: ['./list-shared-societe.component.css']
 })
-export class SocieteComponent implements OnInit, AfterViewInit{
+export class ListSharedSocieteComponent {
   inputValue: string = ''
   displayedColumns: string[] = ['raison_social', 'activite', 'adresse', 'ville', 'capital', 'telephone', 'email', 'action'];
   id_user_courrant: string;
@@ -30,44 +23,22 @@ export class SocieteComponent implements OnInit, AfterViewInit{
   @ViewChild('paginator') paginator:MatPaginator;
   constructor(private http: HttpClient, public sharedService: SharedService, private userService: UserService, private router: Router, private confirmationDialogService: ConfirmationDialogService) {
     this.id_user_courrant = userService.profile.id;
-    this.userService.loadSocietes(this.id_user_courrant).subscribe(societes => {
+    this.userService.getSocieteShared(this.id_user_courrant).subscribe(societes => {
       this.dataSource = societes;
       this.dataS=new MatTableDataSource(this.dataSource);
       this.dataS.paginator=this.paginator;
+      console.log("kkk : ",societes)
     });
-  }
-  ngAfterViewInit(){
 
   }
-  details() {
-
+  removeSharing(idSociete,idCreator){
+    this.dataSource.forEach(mem=>{
+      if(mem.createur.id===idCreator && mem.member.id===this.id_user_courrant && mem.societe.id===idSociete){
+        this.userService.deleteMemberToSociete(mem.id)
+      }
+    })
+    location.reload();
   }
-
-  update() {
-
-  }
-
-  remove(id) {
-    const confirmationData: ConfirmationDialogData = {
-      title: 'Confirmation',
-      message: 'Est-ce-que vous êtes sur?',
-    };
-    this.confirmationDialogService.openConfirmationDialog(confirmationData)
-      .then(result => {
-        if (result) {
-          this.userService.deleteSociete(id)
-          location.reload();
-        } else {
-          console.log('Cancelled');
-        }
-      })
-      .catch(error => {
-        // Handle any errors that occurred during dialog interaction
-        console.error('Confirmation dialog error:', error);
-      });
-  }
-
-
   @ViewChild('searchInputRef', {static: false}) searchInputRef!: ElementRef;
 
   filterItems() {
@@ -79,10 +50,4 @@ export class SocieteComponent implements OnInit, AfterViewInit{
     )
     this.dataSourceBackup.paginator=this.paginator;
   }
-
-  ngOnInit(): void {
-
-
-  }
-
 }

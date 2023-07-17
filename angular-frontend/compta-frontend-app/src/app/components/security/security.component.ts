@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GET_ADMINE, GET_USERNAME} from "../../graphql/queries.graphql";
 import {Subscription} from "rxjs";
 import {Apollo} from "apollo-angular";
@@ -6,7 +6,8 @@ import {AdminService} from "../../services/office-service/AdminService";
 import {KeycloakService} from "keycloak-angular";
 import {Router} from "@angular/router";
 import {BureauAdminService} from "../../services/office-service/BureauAdminService";
-
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from "@angular/material/table";
 
 
 
@@ -18,15 +19,25 @@ import {BureauAdminService} from "../../services/office-service/BureauAdminServi
 export class SecurityComponent implements OnInit{
   displayedColumns: string[] = ['id','userName','email','roles','firstname','lastName','AddRole'];
   dataSource: any[];
-
-  private querySubscription:Subscription;
   loading: boolean;
   admins: any;
 
 
   userId: string;
   username:string;
+  inputElement: any;
+  dataSourceBackup: MatTableDataSource<any>;
+  dataS:MatTableDataSource<any>;
+  @ViewChild('paginator') paginator:MatPaginator;
+
   constructor(private keycloakService: KeycloakService, private apollo:Apollo, private adminService:AdminService, private router:Router) {
+
+    this.adminService.loadAdminsToSuperAdmin().subscribe(admins => {
+      console.log(admins);
+      this.dataSource=admins.filter(admin=>admin.id!='2dbabe35-9b35-4687-8d5e-782680c025d2');
+      this.dataS=new MatTableDataSource(this.dataSource);
+      this.dataS.paginator=this.paginator;
+    });
   }
 
 
@@ -42,10 +53,7 @@ export class SecurityComponent implements OnInit{
   // }
 
   ngOnInit(): void {
-    this.adminService.loadAdminsToSuperAdmin().subscribe(admins => {
-      console.log(admins);
-      this.dataSource=admins.filter(admin=>admin.id!='2dbabe35-9b35-4687-8d5e-782680c025d2');
-    });
+
   }
 
   addRole(id,nom,prenom,email){
@@ -61,5 +69,16 @@ export class SecurityComponent implements OnInit{
   }
 
 
+  @ViewChild('searchInputRef', {static: false}) searchInputRef!: ElementRef;
 
+  filterItems() {
+    this.inputElement = this.searchInputRef.nativeElement as HTMLInputElement;
+    this.dataSourceBackup = new MatTableDataSource<any>(
+      this.dataSource.filter(user =>
+        user.userName.toLowerCase().includes(this.inputElement.value.toLowerCase())
+      )
+    )
+    this.dataSourceBackup.paginator=this.paginator;
+    console.log("wa hano: ",this.dataSourceBackup)
+  }
 }

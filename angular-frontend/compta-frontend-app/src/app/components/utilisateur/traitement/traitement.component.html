@@ -1,2 +1,8 @@
 <p>traitement works! {{idSociete}}</p>
-
+<button class="action-button" mat-raised-button color="accent" [routerLink]="['./share-societe',idSociete]">
+  <mat-icon>share_icon</mat-icon> Partager
+</button>
+<button class="action-button" mat-raised-button color="accent" [routerLink]="['./plan-comptable',idSociete]">
+  <mat-icon>table_chart_icon</mat-icon> Plan comptable
+</button>
+<router-outlet></router-outlet>

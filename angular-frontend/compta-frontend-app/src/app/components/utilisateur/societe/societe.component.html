@@ -1,14 +1,17 @@
+
 <router-outlet></router-outlet>
 <!--<a href="#" [routerLink]="['../../utilisateur']">done</a>/////-->
 
-<!--<a href="#" [routerLink]="['./add-societe']">add so</a>-->
+<div class="mat-elevation-z8  overflow-x-auto padding-tab">
 
-<div class="mat-elevation-z8">
   <form class="search-margin">
     <input type="text" #searchInputRef (input)="filterItems()" class="form-control" placeholder="Search"
            aria-label="Search">
   </form>
-<table mat-table [dataSource]="inputElement?dataSourceBackup:dataSource" class="tab-margin mat-elevation-z8">
+  <button class="action-button-add" mat-raised-button color="basic" [routerLink]="['./add-societe']">
+    <mat-icon> share_icon</mat-icon> ajouter société
+  </button>
+<table mat-table [dataSource]="inputElement?dataSourceBackup:dataS" class="tab-margin mat-elevation-z8">
   <!-- Define the columns -->
   <ng-container matColumnDef="raison_social" class="hover_lign">
     <th mat-header-cell *matHeaderCellDef> Raison social</th>
@@ -61,11 +64,10 @@
   <!-- Define the table row -->
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+  <mat-paginator #paginator [length]="100"
 
-<!--  <mat-paginator [length]="100"-->
-<!--                 [pageSize]="10"-->
-<!--                 [pageSizeOptions]="[5, 10, 25, 100]"-->
-<!--                 aria-label="Select page">-->
-<!--  </mat-paginator>-->
+                 [pageSizeOptions]="[5,10,100]" aria-label="Select page"
+                 >
+  </mat-paginator>
 </div>
 

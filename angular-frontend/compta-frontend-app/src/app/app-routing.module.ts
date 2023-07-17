@@ -15,8 +15,19 @@ import {SocieteComponent} from "./components/utilisateur/societe/societe.compone
 import {AddSocieteComponent} from "./components/utilisateur/societe/add-societe/add-societe.component";
 import {UpdateSocieteComponent} from "./components/utilisateur/societe/update-societe/update-societe.component";
 import {DetailsSocieteComponent} from "./components/utilisateur/societe/details-societe/details-societe.component";
-import {PlanComptableComponent} from "./components/utilisateur/plan-comptable/plan-comptable.component";
+import {PlanComptableComponent} from "./components/utilisateur/traitement/plan-comptable/plan-comptable.component";
 import {TraitementComponent} from "./components/utilisateur/traitement/traitement.component";
+import {ShareSocieteComponent} from "./components/utilisateur/traitement/share-societe/share-societe.component";
+import {ListSharedSocieteComponent} from "./components/utilisateur/list-shared-societe/list-shared-societe.component";
+import {
+  ComptesGenerauxComponent
+} from "./components/utilisateur/traitement/plan-comptable/comptes-generaux/comptes-generaux.component";
+import {
+  UpdateComptesGenerauxComponent
+} from "./components/utilisateur/traitement/plan-comptable/update-comptes-generaux/update-comptes-generaux.component";
+import {
+  UpdatePlanComptableComponent
+} from "./components/utilisateur/traitement/plan-comptable/update-plan-comptable/update-plan-comptable.component";
 
 const routes: Routes = [
   {path: 'sec',component:SecurityComponent},
@@ -46,8 +57,26 @@ const routes: Routes = [
           {path: 'details-societe/:idSociete',component:DetailsSocieteComponent}
         ]
       },
-      {path: 'plan-comptable/:idSociete',component:PlanComptableComponent},
-      {path: 'traitement/:idSociete',component:TraitementComponent},
+      {
+        path: 'traitement/:idSociete',
+        component:TraitementComponent,
+        children:[
+          {path: 'share-societe/:idSociete',component:ShareSocieteComponent},
+          {path: 'plan-comptable/:idSociete',
+            component:PlanComptableComponent,
+            children:[
+              {path: 'compte-generaux/:idSociete',
+                component:ComptesGenerauxComponent,
+                children:[
+                  {path: 'update-compte-generaux/:idCompteGeneral/:idSociete',component:UpdateComptesGenerauxComponent},
+                ]
+              },
+              {path: 'update-plan-comptable/:idSociete/:idPlanComptableElement',component:UpdatePlanComptableComponent},
+            ]
+          },
+        ]
+      },
+      {path: 'list-shared-societe',component:ListSharedSocieteComponent},
     ]
   },
 ];

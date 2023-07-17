@@ -1,8 +1,9 @@
 <p>utilisateur works!</p>
 <a href="#" [routerLink]="['./societes']">hi</a>
 
-<div style="margin-bottom: 10%;">
-  <router-outlet></router-outlet>
+<button class="action-button" mat-raised-button color="basic" [routerLink]="['./list-shared-societe']">
+ <mat-icon> share_icon</mat-icon>  société partager avec vous
+</button>
 
-</div>
+  <router-outlet></router-outlet>
 

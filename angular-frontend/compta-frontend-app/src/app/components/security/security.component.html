@@ -1,6 +1,10 @@
 <!--{{username}}-->
-<div class="mat-elevation-z8">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+<div class="mat-elevation-z8  overflow-x-auto padding-tab">
+  <form class="search-margin">
+    <input type="text" #searchInputRef (input)="filterItems()" class="form-control" placeholder="Search"
+           aria-label="Search">
+  </form>
+<table mat-table [dataSource]="inputElement?dataSourceBackup:dataS" class="mat-elevation-z8 padding-tab" >
 
   <!-- Define the columns -->
   <ng-container matColumnDef="id" class="hover_lign" >
@@ -42,5 +46,9 @@
   <!-- Define the table row -->
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+  <mat-paginator #paginator [length]="100"
+                 [pageSizeOptions]="[5,10,100]" aria-label="Select page"
+  >
+  </mat-paginator>
 </div>
 

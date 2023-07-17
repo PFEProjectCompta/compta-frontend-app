@@ -1,0 +1,64 @@
+<div class="mat-elevation-z8  overflow-x-auto padding-tab">
+
+  <form class="search-margin">
+    <input type="text" #searchInputRef (input)="filterItems()" class="form-control" placeholder="Search"
+           aria-label="Search">
+  </form>
+  <button class="action-button-add" mat-raised-button color="basic" [routerLink]="['./add-societe']">
+    <mat-icon> share_icon</mat-icon> ajouter société
+  </button>
+  <table mat-table [dataSource]="inputElement?dataSourceBackup:dataS" class="tab-margin mat-elevation-z8">
+    <!-- Define the columns -->
+    <ng-container matColumnDef="raison_social" class="hover_lign">
+      <th mat-header-cell *matHeaderCellDef> Raison social</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.raison_social }} </td>
+    </ng-container>
+    <ng-container matColumnDef="activite">
+      <th mat-header-cell *matHeaderCellDef> Activité</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.activite }} </td>
+    </ng-container>
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef> Adresse</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.adresse }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ville">
+      <th mat-header-cell *matHeaderCellDef> Ville</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.ville }} </td>
+    </ng-container>
+    <ng-container matColumnDef="capital">
+      <th mat-header-cell *matHeaderCellDef> Capital</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.capital }} </td>
+    </ng-container>
+    <ng-container matColumnDef="telephone">
+      <th mat-header-cell *matHeaderCellDef> Telephone</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.telephone }} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email</th>
+      <td mat-cell *matCellDef="let element"> {{ element.societe.email }} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element" class="centred">
+        <button class="action-button" mat-fab color="accent" [routerLink]="['../traitement',element.id]">
+          <mat-icon>build_icon</mat-icon>
+        </button>
+        <button class="action-button" mat-fab color="basic" (click)="removeSharing(element.societe.id,element.createur.id)">
+          <mat-icon>remove_circle_outline_icon</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <!-- Define the table header row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Define the table row -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [length]="100"
+
+                 [pageSizeOptions]="[2,3,5,10]" aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
+
+

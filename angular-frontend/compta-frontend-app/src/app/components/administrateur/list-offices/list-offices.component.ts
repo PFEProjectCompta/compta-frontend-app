@@ -5,7 +5,8 @@ import {Bureau} from "../../models/office-app/Bureau";
 import {ActivatedRoute, Router} from "@angular/router";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {ConfirmationDialogService} from "../../../services/confirmation-dialog/ConfirmationDialogService";
-// import {ConfirmationDialogData} from "../../confirmation-dialog-component"
+import {MatPaginator, MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource} from "@angular/material/table";
 
 interface ConfirmationDialogData {
   title: string;
@@ -21,7 +22,10 @@ export class ListOfficesComponent {
   dataSourceBureaux:any[];
   id:string;
   inputElement: any;
-  dataSourceBackup: any[];
+  dataSourceBackup: MatTableDataSource<any>;
+  dataS:MatTableDataSource<any>;
+  @ViewChild('paginator') paginator:MatPaginator;
+
   constructor(private adminService:AdminService,private route:Router,private confirmationDialogService: ConfirmationDialogService) {
     this.id = adminService.profile.id;
     this.loadBureaux();
@@ -33,6 +37,8 @@ export class ListOfficesComponent {
     this.adminService.getBureaux(this.id).subscribe(bureaux => {
       console.log(bureaux)
       this.dataSourceBureaux=bureaux;
+      this.dataS=new MatTableDataSource(this.dataSourceBureaux);
+      this.dataS.paginator=this.paginator;
     });
   }
 
@@ -60,10 +66,12 @@ export class ListOfficesComponent {
   @ViewChild('searchInputRef', {static: false}) searchInputRef!: ElementRef;
   filterItems() {
     this.inputElement = this.searchInputRef.nativeElement as HTMLInputElement;
-    console.log("search : ", this.inputElement.value);
-    this.dataSourceBackup = this.dataSourceBureaux.filter(user =>
-      user.nom.toLowerCase().includes(this.inputElement.value.toLowerCase()) || user.ville.toLowerCase().includes(this.inputElement.value.toLowerCase()) || user.paye.toLowerCase().includes(this.inputElement.value.toLowerCase())
-    );
-    console.log(this.dataSourceBackup)
+    this.dataSourceBackup = new MatTableDataSource<any>(
+        this.dataSourceBureaux.filter(user =>
+        user.nom.toLowerCase().includes(this.inputElement.value.toLowerCase()) || user.ville.toLowerCase().includes(this.inputElement.value.toLowerCase()) || user.paye.toLowerCase().includes(this.inputElement.value.toLowerCase())
+      )
+    )
+    this.dataSourceBackup.paginator=this.paginator;
+
   }
 }

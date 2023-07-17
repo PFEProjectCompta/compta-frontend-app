@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Societe} from "../../../models/office-app/Societe";
 import {UserService} from "../../../../services/office-service/UserService";
+import {CompteUtilisateur} from "../../../models/office-app/CompteUtilisateur";
 
 @Component({
   selector: 'app-add-societe',
@@ -35,7 +36,17 @@ export class AddSocieteComponent {
       addSocieteForm.value.devise, addSocieteForm.value.forme_juridique, addSocieteForm.value.capital,
       addSocieteForm.value.telephone, addSocieteForm.value.email, addSocieteForm.value.site_internet,
       addSocieteForm.value.num_dossier, addSocieteForm.value.identifiant_TVA)
-    this.userService.addSociete(societe);
-    this.router.navigate(['../utilisateur/societes'])
+
+
+
+    this.userService.addSociete(societe)
+      .then(data => {
+        console.log("waaae eeee ee: ",data.ajouterSociete.id)
+        this.userService.addComptesGenerauxSociete(data.ajouterSociete.id);
+        this.router.navigate(['../utilisateur/societes'])
+      })
+      .catch(error => {
+        // Handle the error here
+      });
   }
 }
