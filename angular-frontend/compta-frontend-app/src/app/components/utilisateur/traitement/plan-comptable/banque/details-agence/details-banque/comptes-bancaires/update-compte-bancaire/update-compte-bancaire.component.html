@@ -1,0 +1,111 @@
+<form (ngSubmit)="updateCompteBancaire(updateCompteBancaireForm)" #updateCompteBancaireForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Raison social</mat-label>
+            <input matInput placeholder="Placeholder" name="abrege" [(ngModel)]="abrege">
+            <mat-icon matSuffix>card_travel_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Devise</mat-label>
+            <input matInput placeholder="Placeholder" name="devise" [(ngModel)]="devise">
+            <mat-icon matSuffix>money_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+      </div>
+
+
+      <div class="col-auto">
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Numéro de guichet</mat-label>
+            <input matInput placeholder="Placeholder" name="num_guichet" [(ngModel)]="num_guichet">
+            <mat-icon matSuffix>credit_card_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>num_compte</mat-label>
+            <input matInput placeholder="Placeholder" type="text" name="num_compte" [(ngModel)]="num_compte">
+            <mat-icon matSuffix>account_balance_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+
+      </div>
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Structure</mat-label>
+            <input matInput placeholder="Placeholder" name="structure" [(ngModel)]="structure">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class=" row d-flex align-items-center justify-content-center">
+    <div class="col-4"></div>
+
+    <div class="col-auto">
+      <p>
+        <mat-form-field  appearance="outline">
+          <mat-label>planComptableElementId</mat-label>
+          <input matInput placeholder="Placeholder" name="planComptableElementId" [(ngModel)]="planComptableElementId">
+          <mat-icon matSuffix>format_list_numbered_icon</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-select [formControl]="planCtrl" placeholder="{{planComptableElementId}}" #singleSelect name="planComptableElementId" [(ngModel)]="planComptableElementId" >
+            <mat-option>
+              <ngx-mat-select-search  [formControl]="planFilterCtrl" ></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let item of filteredPlan | async" [value]="item">
+              {{item.numeroCompte}} - {{item.intitule}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+    </div>
+
+    <div class="col-4"></div>
+  </div>
+  <div class="row">
+
+  </div>
+
+
+  <!--  L'ajout de compte bancaire avec le combobox recherche des plancomptable items-->
+  <div class=" row">
+    <div class="col-2"></div>
+
+    <button type="submit" class="col-8 btn btn-primary">Modifier</button>
+
+    <div class="col-2"></div>
+  </div>
+
+</form>
+

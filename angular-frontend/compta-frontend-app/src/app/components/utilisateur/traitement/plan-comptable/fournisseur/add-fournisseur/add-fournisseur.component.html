@@ -1,0 +1,123 @@
+<form (ngSubmit)="addFournisseur(addfournisseurForm)" #addfournisseurForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Prenom</mat-label>
+            <input matInput placeholder="Placeholder" type="text" name="prenom" [(ngModel)]="prenom">
+            <mat-icon matSuffix>person_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Placeholder" name="adresse" [(ngModel)]="adresse">
+            <mat-icon matSuffix>location_on_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+
+
+
+      </div>
+
+
+      <div class="col-auto">
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Placeholder" name="nom" [(ngModel)]="nom">
+            <mat-icon matSuffix>person_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Placeholder" name="email" [(ngModel)]="email">
+            <mat-icon matSuffix>alternate_email_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-auto">
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> business_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </div>
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>téléphone</mat-label>
+            <input matInput placeholder="Placeholder" name="telephone" [(ngModel)]="telephone">
+            <mat-icon matSuffix>perm_contact_calendar_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field hidden appearance="outline">
+            <mat-label>planComptableElementId</mat-label>
+            <input matInput placeholder="Placeholder" name="planComptableElementId" [(ngModel)]="planComptableElementId">
+            <mat-icon matSuffix>format_list_numbered_icon</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select [formControl]="planCtrl" placeholder="Plan comptable" #singleSelect name="planComptableElementId" [(ngModel)]="planComptableElementId" >
+              <mat-option>
+                <ngx-mat-select-search [formControl]="planFilterCtrl"></ngx-mat-select-search>
+              </mat-option>
+              <mat-option *ngFor="let item of filteredPlan | async" [value]="item">
+                {{item.numeroCompte}} - {{item.intitule}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>format_list_numbered_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+
+      </div>
+    </div>
+
+
+    <div class=" row d-flex align-items-center justify-content-center">
+      <div class="col-4"></div>
+
+
+
+      <div class="col-4"></div>
+    </div>
+
+
+  </div>
+
+
+
+  <div class=" row">
+    <div class="col-2"></div>
+
+    <button type="submit" class="col-8 btn btn-primary">Ajouter</button>
+
+    <div class="col-2"></div>
+  </div>
+
+</form>
+

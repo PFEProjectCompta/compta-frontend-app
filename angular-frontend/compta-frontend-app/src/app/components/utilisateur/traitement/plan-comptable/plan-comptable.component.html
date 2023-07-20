@@ -2,11 +2,27 @@
 
 
 <div class="custom-file">
-  <input  type="file" class="custom-file-input" id="inputGroupFile01" (change)="readExcel($event)">
-  <label  class=" label-style custom-file-label"  for="inputGroupFile01">Ajouter plan comptable  <mat-icon>add_box_icon</mat-icon></label>
-  <input  hidden type="button" class="custom-file-input" id="inputGroup1" [routerLink]="['./compte-generaux',idSociete]">
-  <label  class=" label-style custom-file-label"  for="inputGroup1"> Gérer les comptes généraux <mat-icon>add_box_icon</mat-icon></label>
-
+  <div class="space-btns ">
+    <input  type="file" class="custom-file-input" id="inputGroupFile01" (change)="readExcel($event)">
+    <label  class="btn-style label-style custom-file-label"  for="inputGroupFile01"><mat-icon class="icon-style">attach_file_icon</mat-icon>Ajouter plan comptable  </label>
+  </div>
+<!--  <div class="space-btns ">-->
+<!--    <input  hidden type="button" class="custom-file-input" id="inputGroup1" [routerLink]="['./compte-generaux',idSociete]">-->
+<!--    <label  class=" label-style custom-file-label"  for="inputGroup1"> <mat-icon>add_box_icon</mat-icon>Gérer les comptes généraux </label>-->
+<!--  </div>-->
+  <div class="space-btns ">
+    <button mat-button [matMenuTriggerFor]="menu1">les comptes généraux <mat-icon>add_box_icon</mat-icon></button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item [routerLink]="['./compte-generaux',idSociete]">Gérer</button>
+    </mat-menu>  </div>
+  <div class="space-btns ">
+    <button mat-button [matMenuTriggerFor]="menu2">Les comptes tiers <mat-icon>add_box_icon</mat-icon></button>
+    <mat-menu #menu2="matMenu">
+      <button mat-menu-item [routerLink]="['./banque',idSociete]">Banque</button>
+      <button mat-menu-item [routerLink]="['./fournisseur',idSociete]">Fournisseur</button>
+      <button mat-menu-item [routerLink]="['./client',idSociete]">Client</button>
+      <button mat-menu-item [routerLink]="['./salariee',idSociete]">Salariée</button>
+    </mat-menu>  </div>
 </div>
 
 <div class="custom-file">

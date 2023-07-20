@@ -1,0 +1,8 @@
+<p>details-banque works!</p>
+<button mat-button [matMenuTriggerFor]="menu2">Les comptes tiers <mat-icon>add_box_icon</mat-icon></button>
+<mat-menu #menu2="matMenu">
+  <button mat-menu-item (click)="compteBancaire()" >Comptes bancaires</button>
+  <button mat-menu-item (click)="contacts()" >Contacts</button>
+</mat-menu>
+
+<router-outlet></router-outlet>

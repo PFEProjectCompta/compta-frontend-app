@@ -24,3 +24,18 @@ input[type="file"] {
   margin-right: 5px;
 
 }
+.space-btns{
+  margin-right: 2%;
+  display: inline;
+  height: 5%;
+}
+.custom-file{
+  margin-bottom: 2% ;
+
+}
+.btn-style{
+  font-size: 15px;
+}
+.icon-style{
+  font-size: 20px;
+}

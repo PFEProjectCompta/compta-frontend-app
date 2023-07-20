@@ -1,0 +1,112 @@
+<form (ngSubmit)="updateBanque(updateBanqueForm)" #updateBanqueForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Raison social</mat-label>
+            <input matInput placeholder="Placeholder" name="abrege" [(ngModel)]="abrege">
+            <mat-icon matSuffix>card_travel_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Adresse</mat-label>
+            <input matInput placeholder="Placeholder" name="adresse" [(ngModel)]="adresse">
+            <mat-icon matSuffix>location_on_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Code BIC</mat-label>
+            <input matInput placeholder="Placeholder" type="text" name="codeBIC" [(ngModel)]="codeBIC">
+            <mat-icon matSuffix>attach_money_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Code postale</mat-label>
+            <input matInput placeholder="Placeholder" name="code_postale" [(ngModel)]="code_postale">
+            <mat-icon matSuffix>bar_chart_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Adresse email</mat-label>
+            <input matInput placeholder="Placeholder" name="email" [(ngModel)]="email">
+            <mat-icon matSuffix>alternate_email_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> business_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Telecopie</mat-label>
+            <input matInput placeholder="Placeholder" name="telecopie" [(ngModel)]="telecopie">
+            <mat-icon matSuffix>bubble_chart_icon</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Intitulé</mat-label>
+            <input matInput placeholder="Placeholder" name="intitule" [(ngModel)]="intitule">
+            <mat-icon matSuffix> file_copy_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Interlocuteur</mat-label>
+            <input matInput placeholder="Placeholder" name="interlocuteur" [(ngModel)]="interlocuteur">
+            <mat-icon matSuffix>grain_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Site internet</mat-label>
+            <input matInput placeholder="Placeholder" name="site_internet" [(ngModel)]="site_internet">
+            <mat-icon matSuffix>pages_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>téléphone</mat-label>
+            <input matInput placeholder="Placeholder" name="telephone" [(ngModel)]="telephone">
+            <mat-icon matSuffix>contact_phone_icon</mat-icon>
+
+          </mat-form-field>
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class=" row">
+    <div class="col-2"></div>
+
+    <button type="submit" class="col-8 btn btn-primary">Modifier</button>
+
+    <div class="col-2"></div>
+  </div>
+
+</form>
+

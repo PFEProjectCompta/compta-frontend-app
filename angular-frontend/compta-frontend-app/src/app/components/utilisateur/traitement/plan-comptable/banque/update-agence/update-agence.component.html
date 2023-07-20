@@ -1,0 +1,59 @@
+<form (ngSubmit)="updateAgence(updateAgenceForm)" #updateAgenceForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Raison social</mat-label>
+            <input matInput placeholder="Placeholder" name="nom" [(ngModel)]="nom">
+            <mat-icon matSuffix>note_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Complement</mat-label>
+            <input matInput placeholder="Placeholder" name="complement" [(ngModel)]="complement">
+            <mat-icon matSuffix>comment_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+
+      </div>
+
+
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Code postale</mat-label>
+            <input matInput placeholder="Placeholder" name="code_postale" [(ngModel)]="code_postale">
+            <mat-icon matSuffix>code_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Placeholder" name="ville" [(ngModel)]="ville">
+            <mat-icon matSuffix>location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </div>
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Pays</mat-label>
+            <input matInput placeholder="Placeholder" name="pays" [(ngModel)]="pays">
+            <mat-icon matSuffix> location_city_icon</mat-icon>
+          </mat-form-field>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="btn-margin row"><button type="submit" class="btn-margin btn btn-primary">Ajouter</button></div>
+
+
+</form>
+

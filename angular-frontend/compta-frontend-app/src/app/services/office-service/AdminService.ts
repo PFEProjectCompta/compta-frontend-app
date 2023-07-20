@@ -43,6 +43,8 @@ export class AdminService{
     const options1: any = { uri: 'http://localhost:8087/graphql' };
     const options2: any = { uri: 'http://localhost:8081/graphql' };
     const options3: any = { uri: 'http://localhost:8083/graphql' };
+    const banque: any = { uri: 'http://localhost:8084/graphql' };
+    const compte_tier: any = { uri: 'http://localhost:8085/graphql' };
     apollo.createDefault({
       link: httpLink.create(options1),
       cache: new InMemoryCache()
@@ -55,8 +57,14 @@ export class AdminService{
       link:httpLink.create(options3),
       cache:new InMemoryCache()
     })
-
-
+    apollo.createNamed('banque',{
+      link:httpLink.create(banque),
+      cache:new InMemoryCache()
+    })
+    apollo.createNamed('compte_tier',{
+      link:httpLink.create(compte_tier),
+      cache:new InMemoryCache()
+    })
 
   }
 

@@ -35,14 +35,13 @@ export class PlanComptableComponent {
     this.id_current_user=planComptableService.profile.id;
     this.idSociete = this.route.snapshot.params['idSociete'];
     this.planComptableService.loadPlanComptable(this.idSociete).subscribe(planComptable => {
-      planComptable.forEach(item=>{
-        console.log("joj: ",Number(item.numeroCompte.charAt(0))+1)
-      })
+      // planComptable.forEach(item=>{
+      //   console.log("joj: ",Number(item.numeroCompte.charAt(0))+1)
+      // })
 
       this.dataSource = planComptable.slice().sort((a,b)=>Number(a.numeroCompte.charAt(0))-Number(b.numeroCompte.charAt(0)));
       this.dataS=new MatTableDataSource(this.dataSource);
       this.dataS.paginator=this.paginator;
-      console.log("Hopa : ",planComptable);
     });
   }
   sortByFirstCharacter(a: any, b: any): number {

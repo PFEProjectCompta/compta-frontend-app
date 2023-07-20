@@ -54,6 +54,31 @@ import {
 } from "./components/utilisateur/traitement/plan-comptable/comptes-generaux/comptes-generaux.component";
 import { UpdateComptesGenerauxComponent } from './components/utilisateur/traitement/plan-comptable/update-comptes-generaux/update-comptes-generaux.component';
 import { UpdatePlanComptableComponent } from './components/utilisateur/traitement/plan-comptable/update-plan-comptable/update-plan-comptable.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { BanqueComponent } from './components/utilisateur/traitement/plan-comptable/banque/banque.component';
+import { FournisseurComponent } from './components/utilisateur/traitement/plan-comptable/fournisseur/fournisseur.component';
+import { ClientComponent } from './components/utilisateur/traitement/plan-comptable/client/client.component';
+import { SalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/salariee.component';
+import { AddAgenceComponent } from './components/utilisateur/traitement/plan-comptable/banque/add-agence/add-agence.component';
+import { UpdateAgenceComponent } from './components/utilisateur/traitement/plan-comptable/banque/update-agence/update-agence.component';
+import { DetailsAgenceComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-agence.component';
+import { AddBanqueComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/add-banque/add-banque.component';
+import { UpdateBanqueComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/update-banque/update-banque.component';
+import { DetailsBanqueComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/details-banque.component';
+import { ComptesBancairesComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/comptes-bancaires/comptes-bancaires.component';
+import { ContactsComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/contacts/contacts.component';
+import { AddCompteBancaireComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/comptes-bancaires/add-compte-bancaire/add-compte-bancaire.component';
+import {MatSelectModule} from "@angular/material/select";
+import {NgxMatSelectSearchModule} from "ngx-mat-select-search";
+import { UpdateCompteBancaireComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/comptes-bancaires/update-compte-bancaire/update-compte-bancaire.component';
+import { AddContactComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/contacts/add-contact/add-contact.component';
+import { UpdateContactComponent } from './components/utilisateur/traitement/plan-comptable/banque/details-agence/details-banque/contacts/update-contact/update-contact.component';
+import { AddClientComponent } from './components/utilisateur/traitement/plan-comptable/client/add-client/add-client.component';
+import { UpdateClientComponent } from './components/utilisateur/traitement/plan-comptable/client/update-client/update-client.component';
+import { AddFournisseurComponent } from './components/utilisateur/traitement/plan-comptable/fournisseur/add-fournisseur/add-fournisseur.component';
+import { UpdateFournisseurComponent } from './components/utilisateur/traitement/plan-comptable/fournisseur/update-fournisseur/update-fournisseur.component';
+import { AddSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/add-salariee/add-salariee.component';
+import { UpdateSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/update-salariee/update-salariee.component';
 export function kcFactory(kcService: KeycloakService) {
 
   return ()=>{
@@ -96,7 +121,30 @@ export function kcFactory(kcService: KeycloakService) {
     ListSharedSocieteComponent,
     ComptesGenerauxComponent,
     UpdateComptesGenerauxComponent,
-    UpdatePlanComptableComponent
+    UpdatePlanComptableComponent,
+    BanqueComponent,
+    FournisseurComponent,
+    ClientComponent,
+    SalarieeComponent,
+    AddAgenceComponent,
+    UpdateAgenceComponent,
+    DetailsAgenceComponent,
+    AddBanqueComponent,
+    UpdateBanqueComponent,
+    DetailsBanqueComponent,
+    ComptesBancairesComponent,
+    ContactsComponent,
+    AddCompteBancaireComponent,
+    UpdateCompteBancaireComponent,
+    AddContactComponent,
+    UpdateContactComponent,
+    AddClientComponent,
+    UpdateClientComponent,
+    AddFournisseurComponent,
+    UpdateFournisseurComponent,
+    AddSalarieeComponent,
+    UpdateSalarieeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -119,7 +167,9 @@ export function kcFactory(kcService: KeycloakService) {
     MatDialogModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
-
+    MatMenuModule,
+    MatSelectModule,
+    NgxMatSelectSearchModule
   ],
   providers: [
     // {
