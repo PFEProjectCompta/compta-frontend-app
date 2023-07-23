@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OfficeComponent} from "./components/office/office.component";
 import {ChatComponent} from "./components/chat/chat.component";
@@ -89,102 +89,130 @@ import {
 import {
   UpdateSalarieeComponent
 } from "./components/utilisateur/traitement/plan-comptable/salariee/update-salariee/update-salariee.component";
+import {PageGardeComponent} from "./components/page-garde/page-garde.component";
 
 
 const routes: Routes = [
-  {path: 'sec',component:SecurityComponent},
-  {path: 'chat',component:ChatComponent},
+  {path: '', component: PageGardeComponent},
+  {path: 'sec', component: SecurityComponent},
+  {path: 'chat', component: ChatComponent},
   {
     path: 'administrateur',
-    component:AdministrateurComponent,
-    children:[
-      {path:'list-office',component:ListOfficesComponent},
-      {path:'add-office',component:AddOfficesComponent},
-      {path:'update-office/:id',component:UpdateOfficesComponent},
-      {path:'compte-user/:idBureau',component:CompteUserComponent},
-      {path:'add-compte-user/:idBureau',component:AddCompteUserComponent},
-      {path:'update-compte-user/:idCompteUser',component:UpdateCompteUserComponent}
-    ]},
-  {path: 'office',component:OfficeComponent},
+    component: AdministrateurComponent,
+    children: [
+      {path: 'list-office', component: ListOfficesComponent},
+      {path: 'add-office', component: AddOfficesComponent},
+      {path: 'update-office/:id', component: UpdateOfficesComponent},
+      {path: 'compte-user/:idBureau', component: CompteUserComponent},
+      {path: 'add-compte-user/:idBureau', component: AddCompteUserComponent},
+      {path: 'update-compte-user/:idCompteUser', component: UpdateCompteUserComponent}
+    ]
+  },
+  {path: 'office', component: OfficeComponent},
   {
     path: 'utilisateur',
-    component:UtilisateurComponent,
-    children:[
+    component: UtilisateurComponent,
+    children: [
       {
-        path:'societes',
-        component:SocieteComponent,
-        children:[
-          {path: 'add-societe',component:AddSocieteComponent},
-          {path: 'update-societe/:idSociete',component:UpdateSocieteComponent},
-          {path: 'details-societe/:idSociete',component:DetailsSocieteComponent}
+        path: 'societes',
+        component: SocieteComponent,
+        children: [
+          {path: 'add-societe', component: AddSocieteComponent},
+          {path: 'update-societe/:idSociete', component: UpdateSocieteComponent},
+          {path: 'details-societe/:idSociete', component: DetailsSocieteComponent}
         ]
       },
       {
         path: 'traitement/:idSociete',
-        component:TraitementComponent,
-        children:[
-          {path: 'share-societe/:idSociete',component:ShareSocieteComponent},
-          {path: 'plan-comptable/:idSociete',
-            component:PlanComptableComponent,
-            children:[
-              {path: 'compte-generaux/:idSociete',
-                component:ComptesGenerauxComponent,
-                children:[
-                  {path: 'update-compte-generaux/:idCompteGeneral/:idSociete',component:UpdateComptesGenerauxComponent},
+        component: TraitementComponent,
+        children: [
+          {path: 'share-societe/:idSociete', component: ShareSocieteComponent},
+          {
+            path: 'plan-comptable/:idSociete',
+            component: PlanComptableComponent,
+            children: [
+              {
+                path: 'compte-generaux/:idSociete',
+                component: ComptesGenerauxComponent,
+                children: [
+                  {
+                    path: 'update-compte-generaux/:idCompteGeneral/:idSociete',
+                    component: UpdateComptesGenerauxComponent
+                  },
                 ]
               },
-              {path: 'update-plan-comptable/:idSociete/:idPlanComptableElement',component:UpdatePlanComptableComponent},
-              {path: 'banque/:idSociete',component:BanqueComponent, children:[
-                  {path: 'add-agence/:idSociete',component:AddAgenceComponent},
-                  {path: 'update-agence/:idAgence/:idSociete',component:UpdateAgenceComponent},
+              {
+                path: 'update-plan-comptable/:idSociete/:idPlanComptableElement',
+                component: UpdatePlanComptableComponent
+              },
+              {
+                path: 'banque/:idSociete', component: BanqueComponent, children: [
+                  {path: 'add-agence/:idSociete', component: AddAgenceComponent},
+                  {path: 'update-agence/:idAgence/:idSociete', component: UpdateAgenceComponent},
                   {
                     path: 'details-agence/:idAgence/:idSociete',
-                    component:DetailsAgenceComponent,
-                    children:[
-                      {path: 'add-banque/:idAgence/:idSociete',component:AddBanqueComponent},
-                      {path: 'update-banque/:idBanque/:idAgence/:idSociete',component:UpdateBanqueComponent},
-                      {path: 'details-banque/:idBanque/:idAgence/:idSociete',
-                        component:DetailsBanqueComponent,
-                        children:[
-                          {path: 'compte-banciaire/:idBanque/:idAgence/:idSociete',
-                            component:ComptesBancairesComponent,
-                            children:[
-                              {path: 'add-compte-bancaire/:idBanque/:idAgence/:idSociete',component:AddCompteBancaireComponent},
-                              {path: 'update-compte-bancaire/:idCompteBancaire/:idBanque/:idAgence/:idSociete',component:UpdateCompteBancaireComponent},
+                    component: DetailsAgenceComponent,
+                    children: [
+                      {path: 'add-banque/:idAgence/:idSociete', component: AddBanqueComponent},
+                      {path: 'update-banque/:idBanque/:idAgence/:idSociete', component: UpdateBanqueComponent},
+                      {
+                        path: 'details-banque/:idBanque/:idAgence/:idSociete',
+                        component: DetailsBanqueComponent,
+                        children: [
+                          {
+                            path: 'compte-banciaire/:idBanque/:idAgence/:idSociete',
+                            component: ComptesBancairesComponent,
+                            children: [
+                              {
+                                path: 'add-compte-bancaire/:idBanque/:idAgence/:idSociete',
+                                component: AddCompteBancaireComponent
+                              },
+                              {
+                                path: 'update-compte-bancaire/:idCompteBancaire/:idBanque/:idAgence/:idSociete',
+                                component: UpdateCompteBancaireComponent
+                              },
                             ]
                           },
-                          {path: 'contact/:idBanque/:idAgence/:idSociete',
-                            component:ContactsComponent,
-                            children:[
-                              {path: 'add-contact/:idBanque/:idAgence/:idSociete',component:AddContactComponent},
-                              {path: 'update-contact/:idContact/:idBanque/:idAgence/:idSociete',component:UpdateContactComponent},
+                          {
+                            path: 'contact/:idBanque/:idAgence/:idSociete',
+                            component: ContactsComponent,
+                            children: [
+                              {path: 'add-contact/:idBanque/:idAgence/:idSociete', component: AddContactComponent},
+                              {
+                                path: 'update-contact/:idContact/:idBanque/:idAgence/:idSociete',
+                                component: UpdateContactComponent
+                              },
                             ]
                           },
                         ]
                       },
                     ]
                   },
-                ]},
+                ]
+              },
 
-              {path: 'fournisseur/:idSociete',
-                component:FournisseurComponent,
-                children:[
-                  {path: 'add-fournisseur/:idSociete',component:AddFournisseurComponent},
-                  {path: 'update-fournisseur/:idFournisseur/:idSociete',component:UpdateFournisseurComponent},
+              {
+                path: 'fournisseur/:idSociete',
+                component: FournisseurComponent,
+                children: [
+                  {path: 'add-fournisseur/:idSociete', component: AddFournisseurComponent},
+                  {path: 'update-fournisseur/:idFournisseur/:idSociete', component: UpdateFournisseurComponent},
                 ]
               },
-              {path: 'client/:idSociete',
-                component:ClientComponent,
-                children:[
-                  {path: 'add-client/:idSociete',component:AddClientComponent},
-                  {path: 'update-client/:idClient/:idSociete',component:UpdateClientComponent},
+              {
+                path: 'client/:idSociete',
+                component: ClientComponent,
+                children: [
+                  {path: 'add-client/:idSociete', component: AddClientComponent},
+                  {path: 'update-client/:idClient/:idSociete', component: UpdateClientComponent},
                 ]
               },
-              {path: 'salariee/:idSociete',
-                component:SalarieeComponent,
-                children:[
-                  {path: 'add-salariee/:idSociete',component:AddSalarieeComponent},
-                  {path: 'update-salariee/:idSalariee/:idSociete',component:UpdateSalarieeComponent},
+              {
+                path: 'salariee/:idSociete',
+                component: SalarieeComponent,
+                children: [
+                  {path: 'add-salariee/:idSociete', component: AddSalarieeComponent},
+                  {path: 'update-salariee/:idSalariee/:idSociete', component: UpdateSalarieeComponent},
                 ]
               },
 
@@ -192,16 +220,17 @@ const routes: Routes = [
           },
         ]
       },
-      {path: 'list-shared-societe',component:ListSharedSocieteComponent},
+      {path: 'list-shared-societe', component: ListSharedSocieteComponent},
     ]
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,{ enableTracing: true })
+    RouterModule.forRoot(routes, {enableTracing: true})
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
 

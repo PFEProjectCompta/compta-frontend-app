@@ -11,27 +11,31 @@ import {AdminService} from "./services/office-service/AdminService";
 })
 export class AppComponent {
   profile: KeycloakProfile;
-  constructor(public keycloakService: KeycloakService,public adminService:AdminService,public sharedService:SharedService) {
-  this.init();
-  }
-  init(){
-   this.keycloakService.keycloakEvents$.subscribe({
-   next:(e) =>{
-     if (e.type==KeycloakEventType.OnAuthSuccess){
-       this.keycloakService.loadUserProfile().then(profile=>{
-         this.profile=profile;
 
-       });
-     }
-   }
-   });
+  constructor(public keycloakService: KeycloakService, public adminService: AdminService, public sharedService: SharedService) {
+    this.init();
   }
-  login(){
-    this.keycloakService.login({
-      redirectUri:window.location.origin
+
+  init() {
+    this.keycloakService.keycloakEvents$.subscribe({
+      next: (e) => {
+        if (e.type == KeycloakEventType.OnAuthSuccess) {
+          this.keycloakService.loadUserProfile().then(profile => {
+            this.profile = profile;
+
+          });
+        }
+      }
     });
   }
-  logout(){
+
+  login() {
+    this.keycloakService.login({
+      redirectUri: window.location.origin
+    });
+  }
+
+  logout() {
     this.keycloakService.logout(window.location.origin);
   }
 

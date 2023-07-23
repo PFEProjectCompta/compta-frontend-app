@@ -12,7 +12,6 @@
       <li><a href="/sec" *ngIf="keycloakService.getUserRoles().includes('SUPER_ADMIN')" class="nav-link px-2 link-secondary">Administrateurs</a></li>
       <li><a href="/administrateur" *ngIf="keycloakService.getUserRoles().includes('ADMIN')" class="nav-link px-2">Les bureaux</a></li>
       <li><a href="/utilisateur/societes" class="nav-link px-2">Utilisateur</a></li>
-      <li><a href="#" class="nav-link px-2">FAQs</a></li>
       <li><a href="/chat" class="nav-link px-2">Contacter</a></li>
     </ul>
 

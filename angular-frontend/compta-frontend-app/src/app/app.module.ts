@@ -79,6 +79,7 @@ import { AddFournisseurComponent } from './components/utilisateur/traitement/pla
 import { UpdateFournisseurComponent } from './components/utilisateur/traitement/plan-comptable/fournisseur/update-fournisseur/update-fournisseur.component';
 import { AddSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/add-salariee/add-salariee.component';
 import { UpdateSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/update-salariee/update-salariee.component';
+import { PageGardeComponent } from './components/page-garde/page-garde.component';
 export function kcFactory(kcService: KeycloakService) {
 
   return ()=>{
@@ -144,6 +145,7 @@ export function kcFactory(kcService: KeycloakService) {
     UpdateFournisseurComponent,
     AddSalarieeComponent,
     UpdateSalarieeComponent,
+    PageGardeComponent,
 
   ],
   imports: [

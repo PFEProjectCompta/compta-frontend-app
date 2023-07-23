@@ -1,41 +1,49 @@
 input[type="file"] {
   display: none;
 }
+
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
   padding: 6px 12px;
 }
-.label-style{
+
+.label-style {
   cursor: pointer;
 
 }
 
-.search-margin{
+.search-margin {
   margin: 2%;
 
 }
-.padding-tab{
+
+.padding-tab {
   padding: 1%;
 }
-.action-button{
+
+.action-button {
   width: 30px;
   height: 30px;
   margin-right: 5px;
 
 }
-.space-btns{
+
+.space-btns {
   margin-right: 2%;
   display: inline;
   height: 5%;
 }
-.custom-file{
-  margin-bottom: 2% ;
 
+.custom-file {
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
-.btn-style{
+
+.btn-style {
   font-size: 15px;
 }
-.icon-style{
+
+.icon-style {
   font-size: 20px;
 }
