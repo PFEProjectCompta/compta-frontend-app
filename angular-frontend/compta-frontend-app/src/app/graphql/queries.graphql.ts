@@ -617,10 +617,174 @@ const GET_SALARIEE_BY_ID=gql`
     }
   }
 `
+
+
+const GET_EXERCICE_BY_ID_SOCIETE=gql`
+  query($id:String){
+    fullExerciceListBySocieteId(id:$id){
+      id
+      date_debut
+      date_fin
+      societeId
+    }
+  }
+`
+
+const GET_EXERCICE_BY_ID=gql`
+  query($id:String){
+    exerciceById(id:$id){
+      id
+      date_debut
+      date_fin
+      societeId
+    }
+  }
+`
+
+const GET_CODE_JOURNAUX_BY_EXERCICE=gql`
+  query($id:String){
+    fullCodeJournalListByExerciceId(id:$id){
+      id
+      code
+      intitule_journale
+      type_journal
+      exercice{
+        id
+        date_debut
+        date_fin
+        societeId
+      }
+    }
+  }
+`
+
+const GET_CODE_JOURNAUX_BY_ID=gql`
+  query($id:String){
+    codeJournalById(id:$id){
+      id
+      code
+      intitule_journale
+      type_journal
+      exercice{
+        id
+        date_debut
+        date_fin
+        societeId
+      }
+    }
+  }
+`
+
+const GET_SAISIE_JOURNAL_BY_EXERCICE=gql`
+  query($idExercice:String){
+    saisieJournauxByExercice(idExercice:$idExercice){
+      id
+      position
+      periode
+      code
+      intitule_journale
+      classement
+      code_Journal{
+        id
+        code
+        type_journal
+        exercice{
+          id
+        }
+      }
+    }
+  }
+`
+
+const GET_SAISIE_JOURNAL_BY_ID=gql`
+  query($id:String){
+    saisieJournalById(id:$id){
+      id
+      position
+      periode
+      code
+      intitule_journale
+      classement
+      code_Journal{
+        id
+        code
+        type_journal
+        exercice{
+          id
+        }
+      }
+    }
+  }
+`
+
+const GET_JOURNAL_BY_SAISI_JOURNAL=gql`
+  query($id:String){
+    journaleBySaisieJournal(id:$id){
+      id
+      jour
+      numFacture
+      ref
+      numCompteId
+      numCompteTiereId
+      libelle
+      credit
+      debit
+      numCompte{
+        id
+        numeroCompte
+        intitule
+      }
+      numCompteTiere{
+        id
+        numeroCompte
+        intitule
+      }
+      saisieJournaux{
+        id
+        position
+        periode
+        intitule_journale
+      }
+    }
+  }
+`
+const GET_JOURNAL_BY_ID=gql`
+  query($id:String){
+    journaleById(id:$id){
+      id
+      jour
+      numFacture
+      ref
+      numCompteId
+      numCompteTiereId
+      libelle
+      credit
+      debit
+      numCompte{
+        id
+        numeroCompte
+        intitule
+      }
+      numCompteTiere{
+        id
+        numeroCompte
+        intitule
+      }
+      saisieJournaux{
+        id
+        position
+        periode
+        intitule_journale
+      }
+    }
+  }
+`
 export {GET_ADMINE,GET_EXERCICES,GET_USERNAME,MESSAGES_CHAT,COUNT_NEW_MESSAGES,GET_BUREAUX,
   GET_BUREAU_BY_ID,GET_COMPTE_UTILISATEUR,GET_SOCIETE,GET_SOCIETE_BY_ID,GET_SOCIETE_MEMBERS,
   GET_SOCIETE_SHARED,GET_COMPTES_GENERAUX_SOCIETE,GET_COMPTE_GENERAL_BY_ID,GET_PLAN_COMPTABLE,
   GET_PLAN_COMPTABLE_BY_ID,GET_AGENCE_BY_ID_SOCIETE,GET_AGENCE_ID,GET_BANQUE_BY_AGENCE_ID,GET_BANQUE_ID,
   GET_COMPTE_BANCAIRE_By_BANQUE,GET_COMPTE_BANCAIRE_By_ID,GET_CONTACT_BY_ID,GET_CONTACT_BY_BANQUE,
   GET_CLIENT_BY_IDSOCIETE,GET_CLIENT_BY_ID,GET_FOURNISSEUR_BY_ID_SOCIETE,GET_FOURNISSEUR_BY_ID,
-  GET_SALARIEE_BY_ID_SOCIETE,GET_SALARIEE_BY_ID}
+  GET_SALARIEE_BY_ID_SOCIETE,GET_SALARIEE_BY_ID,GET_EXERCICE_BY_ID_SOCIETE,GET_EXERCICE_BY_ID,
+  GET_CODE_JOURNAUX_BY_ID,GET_CODE_JOURNAUX_BY_EXERCICE,GET_SAISIE_JOURNAL_BY_EXERCICE,GET_SAISIE_JOURNAL_BY_ID,
+  GET_JOURNAL_BY_SAISI_JOURNAL,GET_JOURNAL_BY_ID}

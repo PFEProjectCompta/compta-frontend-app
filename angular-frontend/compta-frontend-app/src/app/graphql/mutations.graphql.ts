@@ -993,7 +993,6 @@ const SUPPRIMER_CLIENT=gql`
   }
 `
 
-
 const AJOUTE_SALARIEE=gql`
   mutation($nom:String,$prenom:String,$email:String,
     $adresse:String,$ville:String,$pays:String,$telephone:String,
@@ -1099,6 +1098,285 @@ const SUPPRIMER_SALARIEE=gql`
     }
   }
 `
+
+
+const AJOUTE_EXERCICE=gql`
+  mutation($date_debut:String,$date_fin:String,$societeId:String){
+    ajouterExercice(exercice:{
+      date_debut:$date_debut,
+      date_fin:$date_fin,
+      societeId:$societeId
+    }){
+      id
+      date_debut
+      date_fin
+      societeId
+
+    }
+  }
+`
+const MODIFIER_EXERCICE=gql`
+  mutation($id:String,$date_debut:String,$date_fin:String,$societeId:String){
+    modifierExercice(exercice:{
+      date_debut:$date_debut,
+      date_fin:$date_fin,
+      societeId:$societeId
+    },id:$id){
+      id
+      date_debut
+      date_fin
+      societeId
+    }
+  }
+`
+const AJOUTE_CODE_JOURNAL=gql`
+  mutation($code:String,$intitule_journale:String,
+    $type_journal:String,$exerciceId:String){
+    ajouterCodeJournal(codeJournauxDTO:{
+      code:$code,
+      intitule_journale:$intitule_journale,
+      type_journal:$type_journal,
+      exerciceId:$exerciceId
+    }){
+      id
+      code
+      intitule_journale
+      type_journal
+      exercice{
+        id
+        date_debut
+        date_fin
+        societeId
+      }
+
+    }
+  }
+`
+const MODIFIER_CODE_JOURNAL=gql`
+  mutation($id:String,$code:String,$intitule_journale:String,
+    $type_journal:String,$exerciceId:String){
+    modifierCodeJournal(codeJournauxDTO:{
+      code:$code,
+      intitule_journale:$intitule_journale,
+      type_journal:$type_journal,
+      exerciceId:$exerciceId
+    },id:$id){
+      id
+      code
+      intitule_journale
+      type_journal
+      exercice{
+        id
+        date_debut
+        date_fin
+        societeId
+      }
+    }
+  }
+`
+
+const SUPPRIMER_CODE_JOURNAL=gql`
+  mutation($id:String){
+    supprimerCodeJournal(id:$id){
+      id
+      code
+      intitule_journale
+      type_journal
+      exercice{
+        id
+        date_debut
+        date_fin
+        societeId
+      }
+    }
+  }
+`
+
+const AJOUTE_SAISIE_JOURNAL=gql`
+  mutation($position:String,$periode:String,$code:String,
+    $intitule_journale:String,$code_Journal_id:String){
+    ajouterSaisieJournaux(saisiJournal:{
+      position:$position,
+      periode:$periode,
+      code:$code,
+      intitule_journale:$intitule_journale,
+      code_Journal_id:$code_Journal_id
+    }){
+      id
+      position
+      periode
+      code
+      intitule_journale
+      code_Journal{
+        id
+        code
+        intitule_journale
+        type_journal
+      }
+    }
+  }
+`
+const AJOUTE_ALL_SAISIE_JOURNAL=gql`
+  mutation($id:String){
+    ajouterAllSaisieJournaux(idCodeJournal:$id)
+  }
+`
+const MODIFIER_SAISIE_JOURNAL=gql`
+  mutation($id:String$position:String,$periode:String,$code:String,
+    $intitule_journale:String,$code_Journal_id:String){
+    updateSaisieJournaux(saisiJournal:{
+      position:$position,
+      periode:$periode,
+      code:$code,
+      intitule_journale:$intitule_journale,
+      code_Journal_id:$code_Journal_id
+    },id:$id){
+      id
+      position
+      periode
+      code
+      intitule_journale
+      classement
+      code_Journal{
+        id
+        code
+        type_journal
+        exercice{
+          id
+        }
+      }
+    }
+  }
+`
+const SUPPRIMER_SAISIE_JOURNAL=gql`
+  mutation($id:String){
+    deleteSaisieJournaux(id:$id){
+      id
+    }
+  }
+`
+
+
+const AJOUTER_JOURNAL=gql`
+  mutation($jour:Int,$numFacture:String,$ref:String,
+    $numCompteId:String,$numCompteTiereId:String,
+    $libelle:String,$credit:Float,$debit:Float,
+    $saisieJournauxId:String){
+    ajouterJournale(journalDTO:{
+      jour:$jour,
+      numFacture:$numFacture,
+      ref:$ref,
+      numCompteId:$numCompteId,
+      numCompteTiereId:$numCompteTiereId,
+      libelle:$libelle,
+      credit:$credit,
+      debit:$debit,
+      saisieJournauxId:$saisieJournauxId
+    }){
+      id
+      jour
+      numFacture
+      ref
+      numCompteId
+      numCompteTiereId
+      libelle
+      credit
+      debit
+      numCompte{
+        id
+        numeroCompte
+        intitule
+      }
+      numCompteTiere{
+        id
+        numeroCompte
+        intitule
+      }
+      saisieJournaux{
+        id
+        position
+        periode
+        intitule_journale
+      }
+    }
+  }
+`
+const MODIFIER_JOURNAL=gql`
+  mutation($id:String,$jour:Int,$numFacture:String,$ref:String,
+    $numCompteId:String,$numCompteTiereId:String,
+    $libelle:String,$credit:Float,$debit:Float,
+    $saisieJournauxId:String){
+    updateJournale(journalDTO:{
+      jour:$jour,
+      numFacture:$numFacture,
+      ref:$ref,
+      numCompteId:$numCompteId,
+      numCompteTiereId:$numCompteTiereId,
+      libelle:$libelle,
+      credit:$credit,
+      debit:$debit,
+      saisieJournauxId:$saisieJournauxId
+    },id:$id){
+      id
+      jour
+      numFacture
+      ref
+      numCompteId
+      numCompteTiereId
+      libelle
+      credit
+      debit
+      numCompte{
+        id
+        numeroCompte
+        intitule
+      }
+      numCompteTiere{
+        id
+        numeroCompte
+        intitule
+      }
+      saisieJournaux{
+        id
+        position
+        periode
+        intitule_journale
+      }
+    }
+  }
+`
+const SUPPRIMER_JOURNAL=gql`
+  mutation($id:String){
+    deleteJournale(id:$id){
+      id
+      jour
+      numFacture
+      ref
+      numCompteId
+      numCompteTiereId
+      libelle
+      credit
+      debit
+      numCompte{
+        id
+        numeroCompte
+        intitule
+      }
+      numCompteTiere{
+        id
+        numeroCompte
+        intitule
+      }
+      saisieJournaux{
+        id
+        position
+        periode
+        intitule_journale
+      }
+    }
+  }
+`
+
 export {ADD_ROLE,REMOVE_ROLE,ADD_ADMIN,REMOVE_ADMIN,ADD_BUREAU,UPDATE_BUREAU,REMOVE_BUREAU,
   ADD_COMPTE_UTILISATEUR,REMOVE_COMPTE_UTILISATEUR,ADD_KEYCLOAK_USER,ADD_USER_ROLE,REMOVE_USER_ROLE,
   UPDATE_COMPTE_UTILISATEUR_ACTIF,UPDATE_COMPTE_UTILISATEUR,ADD_SOCIETE,UPDATE_SOCIETE,
@@ -1107,4 +1385,7 @@ export {ADD_ROLE,REMOVE_ROLE,ADD_ADMIN,REMOVE_ADMIN,ADD_BUREAU,UPDATE_BUREAU,REM
   SUPPRIMER_PLANCOMPATNLE_ELEMENT,AJOUTE_AGENCE,MODIFIER_AGENCE,SUPPRIMER_AGENCE,SUPPRIMER_BANQUE,
   MODIFIER_BANQUE,AJOUTER_BANQUE,SUPPRIMER_COMPTE_CANCAIRE,MODIFIER_COMPTE_CANCAIRE,AJOUTER_COMPTE_CANCAIRE,
   AJOUTE_CONTACT,MODIFIER_CONTACT,SUPPRIMER_CONTACT,AJOUTE_FOURNISSEUR,SUPPRIMER_FOURNISSEUR,MODIFIER_FOURNISSEUR,
-  AJOUTE_CLIENT,MODIFIER_CLIENT,SUPPRIMER_CLIENT,AJOUTE_SALARIEE,SUPPRIMER_SALARIEE,MODIFIER_SALARIEE};
+  AJOUTE_CLIENT,MODIFIER_CLIENT,SUPPRIMER_CLIENT,AJOUTE_SALARIEE,SUPPRIMER_SALARIEE,MODIFIER_SALARIEE,
+  AJOUTE_EXERCICE,MODIFIER_EXERCICE,AJOUTE_CODE_JOURNAL,MODIFIER_CODE_JOURNAL,SUPPRIMER_CODE_JOURNAL,
+  AJOUTE_SAISIE_JOURNAL,AJOUTE_ALL_SAISIE_JOURNAL,MODIFIER_SAISIE_JOURNAL,SUPPRIMER_SAISIE_JOURNAL,
+  AJOUTER_JOURNAL,MODIFIER_JOURNAL,SUPPRIMER_JOURNAL};
