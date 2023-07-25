@@ -1,0 +1,43 @@
+<form (ngSubmit)="addCodeJournal(addCodeJournalForm)" #addCodeJournalForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Code</mat-label>
+            <input matInput placeholder="Placeholder" name="code" [(ngModel)]="code">
+            <mat-icon matSuffix>code_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Intitulé journale</mat-label>
+            <input matInput placeholder="Placeholder" name="intitule_journale" [(ngModel)]="intitule_journale">
+            <mat-icon matSuffix>insert_drive_file_icon</mat-icon>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Select Option</mat-label>
+            <mat-select  [(ngModel)]="type_journal" name="type_journal">
+              <mat-option value="ACHATS">ACHATS</mat-option>
+              <mat-option value="VENTES">VENTES</mat-option>
+              <mat-option value="TRESORERIE">TRESORERIE</mat-option>
+              <mat-option value="GENERAL">GENERAL</mat-option>
+              <mat-option value="SITUATION">SITUATION</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>linear_scale_icon</mat-icon>
+          </mat-form-field>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </div>
+</form>
+

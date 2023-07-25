@@ -54,7 +54,7 @@
         <button class="action-button" mat-fab color="warn" (click)="remove(element.id)">
           <mat-icon>delete_icon</mat-icon>
         </button>
-        <button class="action-button" mat-fab color="accent" [routerLink]="['../traitement',element.id]">
+        <button class="action-button" mat-fab color="accent" (click)="redirect(element.id)" >
           <mat-icon>build_icon</mat-icon>
         </button>
       </td>

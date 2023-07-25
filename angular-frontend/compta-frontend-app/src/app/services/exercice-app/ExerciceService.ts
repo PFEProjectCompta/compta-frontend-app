@@ -8,22 +8,22 @@ import {
   GET_CODE_JOURNAUX_BY_EXERCICE,
   GET_CODE_JOURNAUX_BY_ID,
   GET_EXERCICE_BY_ID,
-  GET_EXERCICE_BY_ID_SOCIETE,
+  GET_EXERCICE_BY_ID_SOCIETE, GET_EXERCICE_ETAT,
   GET_JOURNAL_BY_ID,
   GET_JOURNAL_BY_SAISI_JOURNAL,
   GET_SAISIE_JOURNAL_BY_EXERCICE,
-  GET_SAISIE_JOURNAL_BY_ID
+  GET_SAISIE_JOURNAL_BY_ID, IS_ALL_EXERCICE_OF_SOCIETE_CLOSE
 } from "../../graphql/queries.graphql";
 import {map} from "rxjs/operators";
 import {Agence} from "../../components/models/banque-app/Agence";
 import {
   AJOUTE_AGENCE, AJOUTE_ALL_SAISIE_JOURNAL,
   AJOUTE_CODE_JOURNAL,
-  AJOUTE_EXERCICE,
+  AJOUTE_EXERCICE, AJOUTE_EXERCICE_ETAT,
   AJOUTE_SAISIE_JOURNAL,
   AJOUTER_JOURNAL,
   MODIFIER_CODE_JOURNAL,
-  MODIFIER_EXERCICE,
+  MODIFIER_EXERCICE, MODIFIER_EXERCICE_ETAT,
   MODIFIER_JOURNAL,
   MODIFIER_SAISIE_JOURNAL, SUPPRIMER_AGENCE, SUPPRIMER_CODE_JOURNAL, SUPPRIMER_JOURNAL, SUPPRIMER_SAISIE_JOURNAL
 } from "../../graphql/mutations.graphql";
@@ -56,6 +56,19 @@ export class ExerciceService{
         })
       );
   }
+  loadExerciceEtat(): Observable<any[]> {
+    return this.adminService.apollo.use('exercice')
+      .watchQuery<any>({
+        query: GET_EXERCICE_ETAT,
+
+      })
+      .valueChanges.pipe(
+        map(({ data, loading }) => {
+          this.loading = loading;
+          return data.exerciceEtatList;
+        })
+      );
+  }
   loadCodeJournal(idExercice): Observable<any[]> {
     return this.adminService.apollo.use('exercice')
       .watchQuery<any>({
@@ -76,7 +89,7 @@ export class ExerciceService{
       .watchQuery<any>({
         query: GET_SAISIE_JOURNAL_BY_EXERCICE,
         variables:{
-          id:idExercice
+          idExercice:idExercice
         }
       })
       .valueChanges.pipe(
@@ -133,7 +146,21 @@ export class ExerciceService{
         })
       );
   }
-
+  isAllExerciceCloseOfSocieteId(idSociete): Observable<any[]> {
+    return this.adminService.apollo.use('exercice')
+      .watchQuery<any>({
+        query: IS_ALL_EXERCICE_OF_SOCIETE_CLOSE,
+        variables:{
+          id:idSociete
+        }
+      })
+      .valueChanges.pipe(
+        map(({ data, loading }) => {
+          this.loading = loading;
+          return data.idAllExerciceCloseOfSociete;
+        })
+      );
+  }
   saisieJournalById(idSaisieJournal): Observable<any[]> {
     return this.adminService.apollo.use('exercice')
       .watchQuery<any>({
@@ -166,14 +193,35 @@ export class ExerciceService{
       );
   }
 
-  ajouterExercice(exercice:Exercice) {
+  ajouterExercice(exercice:Exercice) : Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.adminService.apollo.use('exercice')
+        .mutate({
+          mutation: AJOUTE_EXERCICE,
+          variables: {
+            date_debut:exercice.date_debut,
+            date_fin:exercice.date_fin,
+            societeId:exercice.societeId
+          },context:{clientName:'agence'}
+        })
+        .subscribe(
+          ({ data }) => {
+            console.log('got data', data);
+            resolve(data);
+          },
+          error => {
+            console.log('there was an error sending the query', error);
+            reject(error);
+          },
+        );
+    });
+  }
+  ajouterExerciceEtat(exerciceId:string) {
     this.adminService.apollo.use('exercice')
       .mutate({
-        mutation: AJOUTE_EXERCICE,
+        mutation: AJOUTE_EXERCICE_ETAT,
         variables: {
-          date_debut:exercice.date_debut,
-          date_fin:exercice.date_fin,
-          societeId:exercice.societeId
+          id:exerciceId
         },context:{clientName:'agence'}
       })
       .subscribe(
@@ -186,26 +234,31 @@ export class ExerciceService{
         },
       );
   }
-  ajouterCodeJournal(codeJournal:CodeJournal) {
-    this.adminService.apollo.use('exercice')
-      .mutate({
-        mutation: AJOUTE_CODE_JOURNAL,
-        variables: {
-          code:codeJournal.code,
-          intitule_journale:codeJournal.intitule_journale,
-          type_journal:codeJournal.type_journal,
-          exerciceId:codeJournal.exerciceId
-        },context:{clientName:'agence'}
-      })
-      .subscribe(
-        ({ data }) => {
-          console.log('got data', data);
+  ajouterCodeJournal(codeJournal:CodeJournal)  : Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.adminService.apollo.use('exercice')
+        .mutate({
+          mutation: AJOUTE_CODE_JOURNAL,
+          variables: {
+            code:codeJournal.code,
+            intitule_journale:codeJournal.intitule_journale,
+            type_journal:codeJournal.type_journal,
+            exerciceId:codeJournal.exerciceId
+          },context:{clientName:'agence'}
+        })
+        .subscribe(
+          ({ data }) => {
+            console.log('got data', data);
+            resolve(data);
+          },
+          error => {
+            console.log('there was an error sending the query', error);
+            reject(error);
 
-        },
-        error => {
-          console.log('there was an error sending the query', error);
-        },
-      );
+          },
+        );
+    });
+
   }
   ajouterSaisieJournal(saisieJournal:SaisieJournal) {
     this.adminService.apollo.use('exercice')
@@ -284,6 +337,25 @@ export class ExerciceService{
           date_fin:exercice.date_fin,
           societeId:exercice.societeId
         },context:{clientName:'agence'}
+      })
+      .subscribe(
+        ({ data }) => {
+          console.log('got data', data);
+
+        },
+        error => {
+          console.log('there was an error sending the query', error);
+        },
+      );
+  }
+  modifierExerciceEtat(idExercice:string ,etat:boolean) {
+    this.adminService.apollo.use('exercice')
+      .mutate({
+        mutation: MODIFIER_EXERCICE_ETAT,
+        variables: {
+          id:idExercice,
+          isFermer:etat
+        }
       })
       .subscribe(
         ({ data }) => {

@@ -80,6 +80,13 @@ import { UpdateFournisseurComponent } from './components/utilisateur/traitement/
 import { AddSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/add-salariee/add-salariee.component';
 import { UpdateSalarieeComponent } from './components/utilisateur/traitement/plan-comptable/salariee/update-salariee/update-salariee.component';
 import { PageGardeComponent } from './components/page-garde/page-garde.component';
+import { ExerciceComponent } from './components/utilisateur/traitement/exercice/exercice.component';
+import { AddExerciceComponent } from './components/utilisateur/traitement/exercice/add-exercice/add-exercice.component';
+import { UpdateExerciceComponent } from './components/utilisateur/traitement/exercice/update-exercice/update-exercice.component';
+import { AttentionDialogComponent } from './components/attention-dialog/attention-dialog.component';
+import { DetailsExerciceComponent } from './components/utilisateur/traitement/exercice/details-exercice/details-exercice.component';
+import { AddCodeJournalComponent } from './components/utilisateur/traitement/exercice/details-exercice/add-code-journal/add-code-journal.component';
+import { DetailsCodeJournalComponent } from './components/utilisateur/traitement/exercice/details-exercice/details-code-journal/details-code-journal.component';
 export function kcFactory(kcService: KeycloakService) {
 
   return ()=>{
@@ -146,6 +153,13 @@ export function kcFactory(kcService: KeycloakService) {
     AddSalarieeComponent,
     UpdateSalarieeComponent,
     PageGardeComponent,
+    ExerciceComponent,
+    AddExerciceComponent,
+    UpdateExerciceComponent,
+    AttentionDialogComponent,
+    DetailsExerciceComponent,
+    AddCodeJournalComponent,
+    DetailsCodeJournalComponent,
 
   ],
   imports: [

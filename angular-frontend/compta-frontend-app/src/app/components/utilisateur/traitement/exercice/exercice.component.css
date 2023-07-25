@@ -1,0 +1,28 @@
+.action-button{
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+
+}
+.action-button-add{
+  margin-bottom: 3%;
+}
+.tab-margin {
+  margin-bottom: 5%;
+  padding-bottom:100px ;
+}
+
+.search-margin{
+  margin: 2%;
+
+}
+.padding-tab{
+  padding: 1%;
+}
+
+.ouvert{
+  color: green;
+}
+.fermer{
+  color: red;
+}

@@ -90,6 +90,20 @@ import {
   UpdateSalarieeComponent
 } from "./components/utilisateur/traitement/plan-comptable/salariee/update-salariee/update-salariee.component";
 import {PageGardeComponent} from "./components/page-garde/page-garde.component";
+import {ExerciceComponent} from "./components/utilisateur/traitement/exercice/exercice.component";
+import {AddExerciceComponent} from "./components/utilisateur/traitement/exercice/add-exercice/add-exercice.component";
+import {
+  UpdateExerciceComponent
+} from "./components/utilisateur/traitement/exercice/update-exercice/update-exercice.component";
+import {
+  DetailsExerciceComponent
+} from "./components/utilisateur/traitement/exercice/details-exercice/details-exercice.component";
+import {
+  AddCodeJournalComponent
+} from "./components/utilisateur/traitement/exercice/details-exercice/add-code-journal/add-code-journal.component";
+import {
+  DetailsCodeJournalComponent
+} from "./components/utilisateur/traitement/exercice/details-exercice/details-code-journal/details-code-journal.component";
 
 
 const routes: Routes = [
@@ -216,6 +230,22 @@ const routes: Routes = [
                 ]
               },
 
+            ]
+          },
+          {
+            path: 'exercice/:idSociete',
+            component: ExerciceComponent,
+            children:[
+              {path: 'add-exercice/:idSociete', component: AddExerciceComponent},
+              {path: 'update-exercice/:idExercice/:idSociete', component: UpdateExerciceComponent},
+              {
+                path: 'details-exercice/:idExercice/:idSociete',
+                component: DetailsExerciceComponent,
+                children: [
+                  {path: 'add-code-journal/:idExercice/:idSociete', component: AddCodeJournalComponent},
+                  {path: 'details-code-journal/:idCodeJournal/:idExercice/:idSociete', component: DetailsCodeJournalComponent},
+                ]
+              },
             ]
           },
         ]

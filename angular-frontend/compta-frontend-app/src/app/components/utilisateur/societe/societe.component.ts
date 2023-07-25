@@ -66,4 +66,8 @@ export class SocieteComponent {
     )
     this.dataSourceBackup.paginator = this.paginator;
   }
+  redirect(id){
+    this.router.navigate(['../utilisateur/traitement',id,'exercice',id])
+
+  }
 }

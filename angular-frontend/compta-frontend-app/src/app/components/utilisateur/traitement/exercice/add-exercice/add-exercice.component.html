@@ -1,0 +1,30 @@
+<form (ngSubmit)="addExercice(addExerciceForm)" #addExerciceForm="ngForm">
+  <div class="container " style="margin-top: 5%;">
+    <div class="row d-flex align-items-center justify-content-center">
+      <div class="col-auto">
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Date debut</mat-label>
+            <input matInput [matDatepicker]="MY_DATE_FORMATS" name="date_debut" [(ngModel)]="date_debut">
+            <mat-datepicker-toggle matIconSuffix [for]="MY_DATE_FORMATS"></mat-datepicker-toggle>
+            <mat-datepicker #MY_DATE_FORMATS ></mat-datepicker>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Date fin</mat-label>
+            <input matInput [matDatepicker]="DATE_FIN_FORMATS" name="date_fin" [(ngModel)]="date_fin">
+            <mat-datepicker-toggle matIconSuffix [for]="DATE_FIN_FORMATS"></mat-datepicker-toggle>
+            <mat-datepicker #DATE_FIN_FORMATS ></mat-datepicker>
+          </mat-form-field>
+        </p>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="row"><button type="submit" class="btn btn-primary">Ajouter</button></div>
+
+</form>

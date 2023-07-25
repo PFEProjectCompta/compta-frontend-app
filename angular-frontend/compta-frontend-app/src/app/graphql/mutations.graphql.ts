@@ -1377,6 +1377,41 @@ const SUPPRIMER_JOURNAL=gql`
   }
 `
 
+//2 types de modification en ExerciceEtat
+const AJOUTE_EXERCICE_ETAT=gql`
+  mutation($id:String){
+    ajouterExerciceEtat(exerciceId:$id){
+      id
+      isFermer
+      classement
+      resultat
+      exerciceId
+    }
+  }
+`
+const MODIFIER_EXERCICE_ETAT=gql`
+  mutation($id:String,$isFermer:Boolean){
+    modifierExerciceEtat(idExercice:$id,isFermer:$isFermer){
+      id
+      isFermer
+      classement
+      resultat
+      exerciceId
+    }
+  }
+`
+
+const MODIFIER_EXERCICE_ETAT_RESULTAT=gql`
+  mutation($id:String,$resultat:Float){
+    modifierExerciceEtatResultat(idExercice:$id,resultat:$resultat){
+      id
+      isFermer
+      classement
+      resultat
+      exerciceId
+    }
+  }
+`
 export {ADD_ROLE,REMOVE_ROLE,ADD_ADMIN,REMOVE_ADMIN,ADD_BUREAU,UPDATE_BUREAU,REMOVE_BUREAU,
   ADD_COMPTE_UTILISATEUR,REMOVE_COMPTE_UTILISATEUR,ADD_KEYCLOAK_USER,ADD_USER_ROLE,REMOVE_USER_ROLE,
   UPDATE_COMPTE_UTILISATEUR_ACTIF,UPDATE_COMPTE_UTILISATEUR,ADD_SOCIETE,UPDATE_SOCIETE,
@@ -1388,4 +1423,5 @@ export {ADD_ROLE,REMOVE_ROLE,ADD_ADMIN,REMOVE_ADMIN,ADD_BUREAU,UPDATE_BUREAU,REM
   AJOUTE_CLIENT,MODIFIER_CLIENT,SUPPRIMER_CLIENT,AJOUTE_SALARIEE,SUPPRIMER_SALARIEE,MODIFIER_SALARIEE,
   AJOUTE_EXERCICE,MODIFIER_EXERCICE,AJOUTE_CODE_JOURNAL,MODIFIER_CODE_JOURNAL,SUPPRIMER_CODE_JOURNAL,
   AJOUTE_SAISIE_JOURNAL,AJOUTE_ALL_SAISIE_JOURNAL,MODIFIER_SAISIE_JOURNAL,SUPPRIMER_SAISIE_JOURNAL,
-  AJOUTER_JOURNAL,MODIFIER_JOURNAL,SUPPRIMER_JOURNAL};
+  AJOUTER_JOURNAL,MODIFIER_JOURNAL,SUPPRIMER_JOURNAL,AJOUTE_EXERCICE_ETAT,MODIFIER_EXERCICE_ETAT,MODIFIER_EXERCICE_ETAT_RESULTAT,
+  };
